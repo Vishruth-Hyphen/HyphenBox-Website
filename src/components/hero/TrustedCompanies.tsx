@@ -3,7 +3,7 @@ import React from "react";
 
 const TrustedCompanies: React.FC = () => {
   return (
-    <div className="container mx-auto px-4 mb-20">
+    <div className="container mx-auto px-4 mb-8">
       <div className="glass rounded-lg py-8 px-6">
         <div className="flex flex-col items-center justify-center">
           <p className="text-lg font-medium mb-4">Trusted by companies backed by</p>
