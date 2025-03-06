@@ -1,34 +1,18 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 10);
     };
-    
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  return (
-    <header 
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled 
-          ? "py-3 glass shadow-sm" 
-          : "py-5 bg-transparent"
-      }`}
-    >
+  return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-3 glass shadow-sm" : "py-5 bg-transparent"}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <img 
-            src="/lovable-uploads/90b9b117-95bc-4ca7-bf95-86fb5a6d9021.png" 
-            alt="Hyphenbox Logo" 
-            className="h-8"
-          />
+          <img alt="Hyphenbox Logo" className="h-8" src="/lovable-uploads/b2f6c92a-068f-463a-a83f-d29a47962e96.png" />
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
@@ -50,8 +34,6 @@ const Header: React.FC = () => {
           <Button>Get Started</Button>
         </div>
       </div>
-    </header>
-  );
+    </header>;
 };
-
 export default Header;
