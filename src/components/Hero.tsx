@@ -2,58 +2,50 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import AnimatedCursor from "./AnimatedCursor";
-
 const Hero: React.FC = () => {
   const demoRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const messageRef = useRef<HTMLDivElement>(null);
-  
   useEffect(() => {
     if (!demoRef.current || !cursorRef.current || !messageRef.current) return;
-    
     const animateCursor = () => {
-      const paths = [
-        { 
-          x: 140, 
-          y: 55, 
-          delay: 0,
-          message: "Click on this sidebar item"
-        },
-        { 
-          x: 220, 
-          y: 110, 
-          delay: 1500,
-          message: "Select this option"
-        },
-        { 
-          x: 300, 
-          y: 170, 
-          delay: 3000,
-          message: "Adjust this setting"
-        },
-        { 
-          x: 180, 
-          y: 190, 
-          delay: 4500,
-          message: "Click Submit"
-        },
-      ];
-      
+      const paths = [{
+        x: 140,
+        y: 55,
+        delay: 0,
+        message: "Click on this sidebar item"
+      }, {
+        x: 220,
+        y: 110,
+        delay: 1500,
+        message: "Select this option"
+      }, {
+        x: 300,
+        y: 170,
+        delay: 3000,
+        message: "Adjust this setting"
+      }, {
+        x: 180,
+        y: 190,
+        delay: 4500,
+        message: "Click Submit"
+      }];
+
       // Only fade the message, keep cursor in final position
       if (messageRef.current) {
         messageRef.current.style.opacity = "0";
-        
+
         // Short delay before starting the next cycle of animation
         setTimeout(() => {
           if (cursorRef.current && messageRef.current) {
             // Keep cursor at the last position
             const lastPosition = paths[paths.length - 1];
             cursorRef.current.style.transform = `translate(${lastPosition.x}px, ${lastPosition.y}px)`;
-            
+
             // Reset message for first step
             messageRef.current.textContent = paths[0].message;
             messageRef.current.style.opacity = "1";
-            
+
             // Start first step animation after a moment
             setTimeout(() => {
               if (cursorRef.current) {
@@ -63,14 +55,13 @@ const Hero: React.FC = () => {
           }
         }, 300);
       }
-      
       paths.forEach((position, index) => {
         setTimeout(() => {
           if (cursorRef.current && messageRef.current) {
             // Animate cursor position with subtle ease
             cursorRef.current.style.transition = "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)";
             cursorRef.current.style.transform = `translate(${position.x}px, ${position.y}px)`;
-            
+
             // Update message with fade effect
             messageRef.current.style.opacity = "0";
             setTimeout(() => {
@@ -79,7 +70,7 @@ const Hero: React.FC = () => {
                 messageRef.current.style.opacity = "1";
               }
             }, 300);
-            
+
             // Add click animation at each step
             setTimeout(() => {
               if (cursorRef.current) {
@@ -95,16 +86,13 @@ const Hero: React.FC = () => {
         }, position.delay);
       });
     };
-    
+
     // Run the animation initially and then every 6 seconds to allow full animation to complete
     animateCursor();
     const interval = setInterval(animateCursor, 6000);
-    
     return () => clearInterval(interval);
   }, []);
-
-  return (
-    <section className="pt-32 pb-20 overflow-hidden">
+  return <section className="pt-32 pb-20 overflow-hidden">
       <div className="container mx-auto px-4">
         <div className="flex flex-col lg:flex-row items-center">
           <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 animate-slide-right">
@@ -130,26 +118,11 @@ const Hero: React.FC = () => {
               </Button>
             </div>
             
-            <div className="mt-8 flex items-center gap-4">
-              <div className="flex -space-x-2">
-                {[1, 2, 3, 4].map((i) => (
-                  <div 
-                    key={i}
-                    className="w-8 h-8 rounded-full border-2 border-white bg-primary/20" 
-                  />
-                ))}
-              </div>
-              <p className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">400+</span> companies already using HyphenBox
-              </p>
-            </div>
+            
           </div>
           
           <div className="w-full lg:w-1/2 relative animate-slide-left">
-            <div 
-              ref={demoRef}
-              className="glass rounded-lg p-4 aspect-video relative overflow-hidden"
-            >
+            <div ref={demoRef} className="glass rounded-lg p-4 aspect-video relative overflow-hidden">
               <div className="absolute inset-0 bg-gradient-to-br from-blue-50 to-purple-50 opacity-40"></div>
               
               {/* Demo interface */}
@@ -166,18 +139,14 @@ const Hero: React.FC = () => {
                   <div className="col-span-1 bg-white/80 rounded shadow-sm p-2">
                     <div className="w-full h-4 bg-primary/10 rounded mb-3"></div>
                     <div className="w-3/4 h-3 bg-gray-200 rounded mb-4"></div>
-                    {[1, 2, 3, 4, 5].map((i) => (
-                      <div key={i} className={`w-full h-6 ${i === 2 ? 'bg-primary/20' : 'bg-gray-100'} rounded mb-2 transition-colors`}></div>
-                    ))}
+                    {[1, 2, 3, 4, 5].map(i => <div key={i} className={`w-full h-6 ${i === 2 ? 'bg-primary/20' : 'bg-gray-100'} rounded mb-2 transition-colors`}></div>)}
                   </div>
                   
                   {/* Main content */}
                   <div className="col-span-4 bg-white/80 rounded shadow-sm p-3">
                     <div className="w-full h-6 bg-gray-200 rounded mb-4"></div>
                     <div className="grid grid-cols-3 gap-3 mb-4">
-                      {[1, 2, 3].map((i) => (
-                        <div key={i} className="h-20 bg-gray-100 rounded"></div>
-                      ))}
+                      {[1, 2, 3].map(i => <div key={i} className="h-20 bg-gray-100 rounded"></div>)}
                     </div>
                     <div className="flex justify-between items-center mt-4">
                       <div className="w-1/3 h-8 bg-gray-100 rounded"></div>
@@ -188,18 +157,13 @@ const Hero: React.FC = () => {
               </div>
               
               {/* Animated cursor */}
-              <div 
-                ref={cursorRef}
-                className="absolute top-0 left-0 w-6 h-6 pointer-events-none z-20 transition-opacity duration-300"
-                style={{ transform: 'translate(140px, 55px)' }}
-              >
+              <div ref={cursorRef} className="absolute top-0 left-0 w-6 h-6 pointer-events-none z-20 transition-opacity duration-300" style={{
+              transform: 'translate(140px, 55px)'
+            }}>
                 <div className="relative w-full h-full">
                   <div className="absolute inset-0 bg-primary rounded-full transform scale-75 animate-pulse-soft"></div>
                   <div className="absolute inset-0 border-2 border-white rounded-full"></div>
-                  <div 
-                    ref={messageRef}
-                    className="absolute -top-8 -left-1 glass rounded px-2 py-1 text-xs whitespace-nowrap transition-opacity duration-300 shadow-sm"
-                  >
+                  <div ref={messageRef} className="absolute -top-8 -left-1 glass rounded px-2 py-1 text-xs whitespace-nowrap transition-opacity duration-300 shadow-sm">
                     Click on this sidebar item
                   </div>
                 </div>
@@ -208,7 +172,9 @@ const Hero: React.FC = () => {
             
             {/* Floating elements */}
             <div className="absolute -top-5 -right-5 w-20 h-20 bg-yellow-200/20 rounded-full blur-xl animate-float"></div>
-            <div className="absolute -bottom-5 -left-5 w-20 h-20 bg-blue-200/20 rounded-full blur-xl animate-float" style={{ animationDelay: '1s' }}></div>
+            <div className="absolute -bottom-5 -left-5 w-20 h-20 bg-blue-200/20 rounded-full blur-xl animate-float" style={{
+            animationDelay: '1s'
+          }}></div>
           </div>
         </div>
       </div>
@@ -232,8 +198,6 @@ const Hero: React.FC = () => {
           }
         `}
       </style>
-    </section>
-  );
+    </section>;
 };
-
 export default Hero;
