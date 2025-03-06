@@ -7,31 +7,96 @@ import AnimatedCursor from "./AnimatedCursor";
 const Hero: React.FC = () => {
   const demoRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
+  const messageRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    if (!demoRef.current || !cursorRef.current) return;
+    if (!demoRef.current || !cursorRef.current || !messageRef.current) return;
     
     const animateCursor = () => {
       const paths = [
-        { x: 50, y: 30, delay: 0 },
-        { x: 150, y: 50, delay: 1000 },
-        { x: 200, y: 100, delay: 2000 },
-        { x: 120, y: 150, delay: 3000 },
-        { x: 50, y: 120, delay: 4000 },
+        { 
+          x: 50, 
+          y: 30, 
+          delay: 0,
+          message: "Let's navigate to Settings"
+        },
+        { 
+          x: 140, 
+          y: 55, 
+          delay: 1200,
+          message: "Click this sidebar item"
+        },
+        { 
+          x: 220, 
+          y: 110, 
+          delay: 2400,
+          message: "Select your preferences"
+        },
+        { 
+          x: 300, 
+          y: 170, 
+          delay: 3600,
+          message: "Enable this feature"
+        },
+        { 
+          x: 180, 
+          y: 190, 
+          delay: 4800,
+          message: "Click Save changes"
+        },
       ];
+      
+      // Reset cursor to starting position with opacity 0
+      if (cursorRef.current && messageRef.current) {
+        cursorRef.current.style.opacity = "0";
+        messageRef.current.style.opacity = "0";
+        
+        // Short delay before starting animation
+        setTimeout(() => {
+          if (cursorRef.current && messageRef.current) {
+            cursorRef.current.style.opacity = "1";
+            messageRef.current.style.opacity = "1";
+          }
+        }, 300);
+      }
       
       paths.forEach((position, index) => {
         setTimeout(() => {
-          if (cursorRef.current) {
+          if (cursorRef.current && messageRef.current) {
+            // Animate cursor position with subtle ease
+            cursorRef.current.style.transition = "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)";
             cursorRef.current.style.transform = `translate(${position.x}px, ${position.y}px)`;
+            
+            // Update message with fade effect
+            messageRef.current.style.opacity = "0";
+            setTimeout(() => {
+              if (messageRef.current) {
+                messageRef.current.textContent = position.message;
+                messageRef.current.style.opacity = "1";
+              }
+            }, 300);
+            
+            // Add click animation at specific points (positions 1, 2, and 4)
+            if (index === 1 || index === 2 || index === 4) {
+              setTimeout(() => {
+                if (cursorRef.current) {
+                  cursorRef.current.classList.add("cursor-click");
+                  setTimeout(() => {
+                    if (cursorRef.current) {
+                      cursorRef.current.classList.remove("cursor-click");
+                    }
+                  }, 300);
+                }
+              }, 400);
+            }
           }
         }, position.delay);
       });
     };
     
-    // Run the animation initially and then every 5 seconds
+    // Run the animation initially and then every 6.5 seconds to allow full animation to complete
     animateCursor();
-    const interval = setInterval(animateCursor, 5000);
+    const interval = setInterval(animateCursor, 6500);
     
     return () => clearInterval(interval);
   }, []);
@@ -91,16 +156,16 @@ const Hero: React.FC = () => {
                   <div className="w-3 h-3 rounded-full bg-red-400"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
                   <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                  <div className="flex-1 text-center text-xs text-gray-400">Application Demo</div>
+                  <div className="flex-1 text-center text-xs text-gray-400">HyphenBox Dashboard</div>
                 </div>
                 
                 <div className="flex-1 p-4 grid grid-cols-5 gap-4">
                   {/* Sidebar */}
                   <div className="col-span-1 bg-white/80 rounded shadow-sm p-2">
-                    <div className="w-full h-3 bg-gray-200 rounded mb-2"></div>
+                    <div className="w-full h-4 bg-primary/10 rounded mb-3"></div>
                     <div className="w-3/4 h-3 bg-gray-200 rounded mb-4"></div>
                     {[1, 2, 3, 4, 5].map((i) => (
-                      <div key={i} className="w-full h-6 bg-gray-100 rounded mb-2"></div>
+                      <div key={i} className={`w-full h-6 ${i === 2 ? 'bg-primary/20' : 'bg-gray-100'} rounded mb-2 transition-colors`}></div>
                     ))}
                   </div>
                   
@@ -112,7 +177,10 @@ const Hero: React.FC = () => {
                         <div key={i} className="h-20 bg-gray-100 rounded"></div>
                       ))}
                     </div>
-                    <div className="w-full h-40 bg-gray-100 rounded"></div>
+                    <div className="flex justify-between items-center mt-4">
+                      <div className="w-1/3 h-8 bg-gray-100 rounded"></div>
+                      <div className="w-24 h-8 bg-primary/80 rounded"></div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -120,13 +188,17 @@ const Hero: React.FC = () => {
               {/* Animated cursor */}
               <div 
                 ref={cursorRef}
-                className="absolute top-0 left-0 w-6 h-6 pointer-events-none z-20"
+                className="absolute top-0 left-0 w-6 h-6 pointer-events-none z-20 transition-opacity duration-300"
+                style={{ transform: 'translate(50px, 30px)' }}
               >
                 <div className="relative w-full h-full">
                   <div className="absolute inset-0 bg-primary rounded-full transform scale-75 animate-pulse-soft"></div>
                   <div className="absolute inset-0 border-2 border-white rounded-full"></div>
-                  <div className="absolute -top-8 -left-1 glass rounded px-2 py-1 text-xs whitespace-nowrap">
-                    Click this button
+                  <div 
+                    ref={messageRef}
+                    className="absolute -top-8 -left-1 glass rounded px-2 py-1 text-xs whitespace-nowrap transition-opacity duration-300 shadow-sm"
+                  >
+                    Let's navigate to Settings
                   </div>
                 </div>
               </div>
@@ -138,6 +210,24 @@ const Hero: React.FC = () => {
           </div>
         </div>
       </div>
+      
+      {/* Add CSS for cursor click animation */}
+      <style jsx>{`
+        .cursor-click {
+          transform: scale(0.8) !important;
+          transition: transform 0.1s ease-in-out !important;
+        }
+        
+        @keyframes pulse-soft {
+          0% { opacity: 0.6; }
+          50% { opacity: 1; }
+          100% { opacity: 0.6; }
+        }
+        
+        .animate-pulse-soft {
+          animation: pulse-soft 2s infinite ease-in-out;
+        }
+      `}</style>
     </section>
   );
 };

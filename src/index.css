@@ -127,3 +127,36 @@ html {
     transform: translateX(100%);
   }
 }
+
+/* Cursor click animation */
+@keyframes cursor-click {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.8); }
+  100% { transform: scale(1); }
+}
+
+.cursor-click {
+  animation: cursor-click 0.3s ease-in-out;
+}
+
+/* Float animation for background elements */
+@keyframes float {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0px); }
+}
+
+.animate-float {
+  animation: float 6s infinite ease-in-out;
+}
+
+/* Pulse animation for cursor */
+@keyframes pulse-soft {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+.animate-pulse-soft {
+  animation: pulse-soft 2s infinite ease-in-out;
+}
