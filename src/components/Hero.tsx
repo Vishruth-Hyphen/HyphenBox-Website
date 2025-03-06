@@ -39,15 +39,27 @@ const Hero: React.FC = () => {
         },
       ];
       
-      // Make messages fade out but keep cursor in place
+      // Only fade the message, keep cursor in final position
       if (messageRef.current) {
         messageRef.current.style.opacity = "0";
         
         // Short delay before starting the next cycle of animation
         setTimeout(() => {
-          if (messageRef.current) {
-            messageRef.current.style.opacity = "1";
+          if (cursorRef.current && messageRef.current) {
+            // Keep cursor at the last position
+            const lastPosition = paths[paths.length - 1];
+            cursorRef.current.style.transform = `translate(${lastPosition.x}px, ${lastPosition.y}px)`;
+            
+            // Reset message for first step
             messageRef.current.textContent = paths[0].message;
+            messageRef.current.style.opacity = "1";
+            
+            // Start first step animation after a moment
+            setTimeout(() => {
+              if (cursorRef.current) {
+                cursorRef.current.style.transform = `translate(${paths[0].x}px, ${paths[0].y}px)`;
+              }
+            }, 300);
           }
         }, 300);
       }
