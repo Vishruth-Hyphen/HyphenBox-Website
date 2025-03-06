@@ -1,6 +1,5 @@
 
 import React from "react";
-import { Navigation } from "lucide-react";
 
 const Footer: React.FC = () => {
   return (
@@ -9,7 +8,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-4 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <Navigation className="w-5 h-5 text-primary" />
+              <img src="/lovable-uploads/3c26d8b0-3f8b-4a55-a617-e62da83daf42.png" alt="Hyphenbox Logo" className="h-6" />
               <span className="font-medium text-lg">HyphenBox</span>
             </div>
             <p className="text-muted-foreground mb-4 max-w-xs">
