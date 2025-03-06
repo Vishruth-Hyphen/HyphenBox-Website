@@ -67,34 +67,6 @@ const Features: React.FC = () => {
           ))}
         </div>
         
-        {/* Hyphenbox Logo section */}
-        <div className="mt-16 mb-8 text-center">
-          <div className="glass rounded-lg py-8 px-6">
-            <div className="flex flex-col items-center justify-center">
-              <p className="text-lg font-medium mb-4">Trusted by companies backed by</p>
-              <div className="flex items-center justify-center bg-white/80 px-6 py-3 rounded-lg">
-                <img 
-                  src="/lovable-uploads/d837605b-332b-4ec9-8552-95c3005ec88e.png" 
-                  alt="Y Combinator Logo" 
-                  className="h-10"
-                />
-              </div>
-              <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-                {[1, 2, 3, 4].map((i) => (
-                  <div 
-                    key={i} 
-                    className="h-12 bg-white/50 rounded flex items-center justify-center"
-                  >
-                    <div className="text-lg font-medium text-muted-foreground/70">
-                      Startup {i}
-                    </div>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-        
         <div className="mt-16 glass rounded-lg p-8">
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-2/3 mb-6 md:mb-0 md:pr-8">
