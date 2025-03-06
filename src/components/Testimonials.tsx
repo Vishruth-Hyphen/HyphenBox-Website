@@ -31,7 +31,7 @@ const testimonials = [
 
 const Testimonials: React.FC = () => {
   return (
-    <section id="testimonials" className="py-20">
+    <section id="testimonials" className="py-20 hidden">
       <div className="section-container">
         <div className="inline-block px-3 py-1 mb-6 rounded-full bg-primary/10 text-primary text-center mx-auto">
           Testimonials
