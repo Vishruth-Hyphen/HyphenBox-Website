@@ -5,7 +5,7 @@ const Footer: React.FC = () => {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div className="col-span-1 md:col-span-4 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
-              <img src="/lovable-uploads/3c26d8b0-3f8b-4a55-a617-e62da83daf42.png" alt="Hyphenbox Logo" className="h-6" />
+              <img src="/lovable-uploads/3c26d8b0-3f8b-4a55-a617-e62da83daf42.png" alt="Hyphenbox Logo" className="h-11" />
               
             </div>
             <p className="text-muted-foreground mb-4 max-w-xs">
