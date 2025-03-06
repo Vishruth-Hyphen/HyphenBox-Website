@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
 const Header: React.FC = () => {
@@ -29,9 +28,7 @@ const Header: React.FC = () => {
         </nav>
         
         <div className="flex items-center gap-4">
-          <Button variant="ghost" className="hidden md:inline-flex">
-            Log in
-          </Button>
+          
           <Button>Get Started</Button>
         </div>
       </div>
