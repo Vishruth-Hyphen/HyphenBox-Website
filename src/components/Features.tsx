@@ -74,8 +74,8 @@ const Features: React.FC = () => {
               <p className="text-lg font-medium mb-4">Trusted by companies backed by</p>
               <div className="flex items-center justify-center bg-white/80 px-6 py-3 rounded-lg">
                 <img 
-                  src="/lovable-uploads/06e9bead-be5d-44ab-af73-38c57fc13680.png" 
-                  alt="Hyphenbox Logo" 
+                  src="/lovable-uploads/d837605b-332b-4ec9-8552-95c3005ec88e.png" 
+                  alt="Y Combinator Logo" 
                   className="h-10"
                 />
               </div>
