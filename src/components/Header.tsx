@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import { Navigation } from "lucide-react";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,8 +24,11 @@ const Header: React.FC = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
-          <Navigation className="w-6 h-6 text-primary" />
-          <span className="font-medium text-xl">HyphenBox</span>
+          <img 
+            src="/lovable-uploads/90b9b117-95bc-4ca7-bf95-86fb5a6d9021.png" 
+            alt="Hyphenbox Logo" 
+            className="h-8"
+          />
         </div>
         
         <nav className="hidden md:flex items-center space-x-8">
