@@ -15,34 +15,28 @@ const Hero: React.FC = () => {
     const animateCursor = () => {
       const paths = [
         { 
-          x: 50, 
-          y: 30, 
-          delay: 0,
-          message: "Let's navigate to Settings"
-        },
-        { 
           x: 140, 
           y: 55, 
-          delay: 1200,
-          message: "Click this sidebar item"
+          delay: 0,
+          message: "Click on this sidebar item"
         },
         { 
           x: 220, 
           y: 110, 
-          delay: 2400,
-          message: "Select your preferences"
+          delay: 1500,
+          message: "Select this option"
         },
         { 
           x: 300, 
           y: 170, 
-          delay: 3600,
-          message: "Enable this feature"
+          delay: 3000,
+          message: "Adjust this setting"
         },
         { 
           x: 180, 
           y: 190, 
-          delay: 4800,
-          message: "Click Save changes"
+          delay: 4500,
+          message: "Click Submit"
         },
       ];
       
@@ -76,27 +70,25 @@ const Hero: React.FC = () => {
               }
             }, 300);
             
-            // Add click animation at specific points (positions 1, 2, and 4)
-            if (index === 1 || index === 2 || index === 4) {
-              setTimeout(() => {
-                if (cursorRef.current) {
-                  cursorRef.current.classList.add("cursor-click");
-                  setTimeout(() => {
-                    if (cursorRef.current) {
-                      cursorRef.current.classList.remove("cursor-click");
-                    }
-                  }, 300);
-                }
-              }, 400);
-            }
+            // Add click animation at each step
+            setTimeout(() => {
+              if (cursorRef.current) {
+                cursorRef.current.classList.add("cursor-click");
+                setTimeout(() => {
+                  if (cursorRef.current) {
+                    cursorRef.current.classList.remove("cursor-click");
+                  }
+                }, 300);
+              }
+            }, 400);
           }
         }, position.delay);
       });
     };
     
-    // Run the animation initially and then every 6.5 seconds to allow full animation to complete
+    // Run the animation initially and then every 6 seconds to allow full animation to complete
     animateCursor();
-    const interval = setInterval(animateCursor, 6500);
+    const interval = setInterval(animateCursor, 6000);
     
     return () => clearInterval(interval);
   }, []);
@@ -189,7 +181,7 @@ const Hero: React.FC = () => {
               <div 
                 ref={cursorRef}
                 className="absolute top-0 left-0 w-6 h-6 pointer-events-none z-20 transition-opacity duration-300"
-                style={{ transform: 'translate(50px, 30px)' }}
+                style={{ transform: 'translate(140px, 55px)' }}
               >
                 <div className="relative w-full h-full">
                   <div className="absolute inset-0 bg-primary rounded-full transform scale-75 animate-pulse-soft"></div>
@@ -198,7 +190,7 @@ const Hero: React.FC = () => {
                     ref={messageRef}
                     className="absolute -top-8 -left-1 glass rounded px-2 py-1 text-xs whitespace-nowrap transition-opacity duration-300 shadow-sm"
                   >
-                    Let's navigate to Settings
+                    Click on this sidebar item
                   </div>
                 </div>
               </div>
@@ -211,23 +203,25 @@ const Hero: React.FC = () => {
         </div>
       </div>
       
-      {/* Add CSS for cursor click animation */}
-      <style jsx>{`
-        .cursor-click {
-          transform: scale(0.8) !important;
-          transition: transform 0.1s ease-in-out !important;
-        }
-        
-        @keyframes pulse-soft {
-          0% { opacity: 0.6; }
-          50% { opacity: 1; }
-          100% { opacity: 0.6; }
-        }
-        
-        .animate-pulse-soft {
-          animation: pulse-soft 2s infinite ease-in-out;
-        }
-      `}</style>
+      {/* CSS animations */}
+      <style>
+        {`
+          .cursor-click {
+            transform: scale(0.8) !important;
+            transition: transform 0.1s ease-in-out !important;
+          }
+          
+          @keyframes pulse-soft {
+            0% { opacity: 0.6; }
+            50% { opacity: 1; }
+            100% { opacity: 0.6; }
+          }
+          
+          .animate-pulse-soft {
+            animation: pulse-soft 2s infinite ease-in-out;
+          }
+        `}
+      </style>
     </section>
   );
 };
