@@ -18,7 +18,7 @@ const CTA: React.FC = () => {
             Transform Your User Experience
           </h2>
           <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join hundreds of forward-thinking companies that are using GuideCursor to improve user adoption, reduce support costs, and deliver exceptional experiences.
+            Join hundreds of forward-thinking companies that are using HyphenBox to improve user adoption, reduce support costs, and deliver exceptional experiences.
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">

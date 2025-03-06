@@ -7,25 +7,25 @@ const testimonials = [
     name: "Sarah Johnson",
     role: "Product Manager at TechFlow",
     image: "profile-1.png",
-    content: "GuideCursor reduced our customer support tickets by 42% in the first month. The autonomous indexing makes it incredibly easy to keep help content up-to-date."
+    content: "HyphenBox reduced our customer support tickets by 42% in the first month. The autonomous indexing makes it incredibly easy to keep help content up-to-date."
   },
   {
     name: "Michael Chen",
     role: "CTO at DataSphere",
     image: "profile-2.png",
-    content: "We integrated GuideCursor in our enterprise software and saw immediate improvements in user activation rates. The zero-configuration approach saved us countless development hours."
+    content: "We integrated HyphenBox in our enterprise software and saw immediate improvements in user activation rates. The zero-configuration approach saved us countless development hours."
   },
   {
     name: "Emily Rodriguez",
     role: "UX Designer at CreativeEdge",
     image: "profile-3.png",
-    content: "As a designer, I love how GuideCursor seamlessly integrates with our UI without disrupting the user experience. It provides help exactly when users need it."
+    content: "As a designer, I love how HyphenBox seamlessly integrates with our UI without disrupting the user experience. It provides help exactly when users need it."
   },
   {
     name: "David Kim",
     role: "VP of Customer Success at SaaSMaster",
     image: "profile-4.png",
-    content: "The analytics provided by GuideCursor have been invaluable in helping us understand user pain points and optimize our product accordingly."
+    content: "The analytics provided by HyphenBox have been invaluable in helping us understand user pain points and optimize our product accordingly."
   }
 ];
 
@@ -38,7 +38,7 @@ const Testimonials: React.FC = () => {
         </div>
         <h2 className="section-title">Trusted by innovative teams</h2>
         <p className="section-subtitle">
-          See how companies are improving their user experience and reducing support costs with GuideCursor.
+          See how companies are improving their user experience and reducing support costs with HyphenBox.
         </p>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">

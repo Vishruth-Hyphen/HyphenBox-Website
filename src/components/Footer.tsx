@@ -10,7 +10,7 @@ const Footer: React.FC = () => {
           <div className="col-span-1 md:col-span-4 lg:col-span-1">
             <div className="flex items-center gap-2 mb-4">
               <Navigation className="w-5 h-5 text-primary" />
-              <span className="font-medium text-lg">GuideCursor</span>
+              <span className="font-medium text-lg">HyphenBox</span>
             </div>
             <p className="text-muted-foreground mb-4 max-w-xs">
               The intelligent second cursor that guides your users through your product with ease.
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
         
         <div className="mt-12 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center">
           <div className="text-sm text-muted-foreground mb-4 md:mb-0">
-            © {new Date().getFullYear()} GuideCursor. All rights reserved.
+            © {new Date().getFullYear()} HyphenBox. All rights reserved.
           </div>
           
           <div className="flex space-x-6">

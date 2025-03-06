@@ -73,7 +73,7 @@ const Hero: React.FC = () => {
                 ))}
               </div>
               <p className="text-sm text-muted-foreground">
-                <span className="font-medium text-foreground">400+</span> companies already using GuideCursor
+                <span className="font-medium text-foreground">400+</span> companies already using HyphenBox
               </p>
             </div>
           </div>
