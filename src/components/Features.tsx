@@ -1,6 +1,6 @@
 
 import React from "react";
-import { Check, Rocket, Navigation, Magic, Users, Infinity, BarChart } from "lucide-react";
+import { Check, Rocket, Navigation, Wand2, Users, Infinity, BarChart } from "lucide-react";
 
 const features = [
   {
@@ -10,7 +10,7 @@ const features = [
     className: "border-t-primary"
   },
   {
-    icon: <Magic className="w-10 h-10 text-primary" />,
+    icon: <Wand2 className="w-10 h-10 text-primary" />,
     title: "Intelligent Guides",
     description: "Creates step-by-step guides for any action in your product based on the indexed flows.",
     className: "border-t-accent"
