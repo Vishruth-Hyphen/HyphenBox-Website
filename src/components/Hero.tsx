@@ -1,4 +1,3 @@
-
 import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
@@ -40,16 +39,15 @@ const Hero: React.FC = () => {
         },
       ];
       
-      // Reset cursor to starting position with opacity 0
-      if (cursorRef.current && messageRef.current) {
-        cursorRef.current.style.opacity = "0";
+      // Make messages fade out but keep cursor in place
+      if (messageRef.current) {
         messageRef.current.style.opacity = "0";
         
-        // Short delay before starting animation
+        // Short delay before starting the next cycle of animation
         setTimeout(() => {
-          if (cursorRef.current && messageRef.current) {
-            cursorRef.current.style.opacity = "1";
+          if (messageRef.current) {
             messageRef.current.style.opacity = "1";
+            messageRef.current.textContent = paths[0].message;
           }
         }, 300);
       }
