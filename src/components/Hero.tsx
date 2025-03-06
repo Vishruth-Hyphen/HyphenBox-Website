@@ -2,12 +2,10 @@ import React, { useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 import AnimatedCursor from "./AnimatedCursor";
-
 const Hero: React.FC = () => {
   const demoRef = useRef<HTMLDivElement>(null);
   const cursorRef = useRef<HTMLDivElement>(null);
   const messageRef = useRef<HTMLDivElement>(null);
-
   useEffect(() => {
     if (!demoRef.current || !cursorRef.current || !messageRef.current) return;
     const animateCursor = () => {
@@ -32,18 +30,14 @@ const Hero: React.FC = () => {
         delay: 4500,
         message: "Click Submit"
       }];
-
       if (messageRef.current) {
         messageRef.current.style.opacity = "0";
-
         setTimeout(() => {
           if (cursorRef.current && messageRef.current) {
             const lastPosition = paths[paths.length - 1];
             cursorRef.current.style.transform = `translate(${lastPosition.x}px, ${lastPosition.y}px)`;
-
             messageRef.current.textContent = paths[0].message;
             messageRef.current.style.opacity = "1";
-
             setTimeout(() => {
               if (cursorRef.current) {
                 cursorRef.current.style.transform = `translate(${paths[0].x}px, ${paths[0].y}px)`;
@@ -52,13 +46,11 @@ const Hero: React.FC = () => {
           }
         }, 300);
       }
-
       paths.forEach((position, index) => {
         setTimeout(() => {
           if (cursorRef.current && messageRef.current) {
             cursorRef.current.style.transition = "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)";
             cursorRef.current.style.transform = `translate(${position.x}px, ${position.y}px)`;
-
             messageRef.current.style.opacity = "0";
             setTimeout(() => {
               if (messageRef.current) {
@@ -66,7 +58,6 @@ const Hero: React.FC = () => {
                 messageRef.current.style.opacity = "1";
               }
             }, 300);
-
             setTimeout(() => {
               if (cursorRef.current) {
                 cursorRef.current.classList.add("cursor-click");
@@ -81,14 +72,11 @@ const Hero: React.FC = () => {
         }, position.delay);
       });
     };
-
     animateCursor();
     const interval = setInterval(animateCursor, 6000);
     return () => clearInterval(interval);
   }, []);
-
-  return (
-    <>
+  return <>
       <section className="pt-32 pb-20 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="flex flex-col lg:flex-row items-center">
@@ -110,9 +98,7 @@ const Hero: React.FC = () => {
                   Get Started 
                   <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                 </Button>
-                <Button size="lg" variant="outline">
-                  See Demo
-                </Button>
+                
               </div>
             </div>
             
@@ -201,29 +187,12 @@ const Hero: React.FC = () => {
           <div className="flex flex-col items-center justify-center">
             <p className="text-lg font-medium mb-4">Trusted by companies backed by</p>
             <div className="flex items-center justify-center bg-white/80 px-6 py-3 rounded-lg">
-              <img 
-                src="/lovable-uploads/d837605b-332b-4ec9-8552-95c3005ec88e.png" 
-                alt="Y Combinator Logo" 
-                className="h-10"
-              />
+              <img src="/lovable-uploads/d837605b-332b-4ec9-8552-95c3005ec88e.png" alt="Y Combinator Logo" className="h-10" />
             </div>
-            <div className="mt-8 grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-8">
-              {[1, 2, 3, 4].map((i) => (
-                <div 
-                  key={i} 
-                  className="h-12 bg-white/50 rounded flex items-center justify-center"
-                >
-                  <div className="text-lg font-medium text-muted-foreground/70">
-                    Startup {i}
-                  </div>
-                </div>
-              ))}
-            </div>
+            
           </div>
         </div>
       </div>
-    </>
-  );
+    </>;
 };
-
 export default Hero;
