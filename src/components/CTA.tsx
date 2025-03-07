@@ -1,8 +1,6 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
 const CTA: React.FC = () => {
   return <section className="py-20 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
@@ -21,21 +19,15 @@ const CTA: React.FC = () => {
           </p>
           
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="group">
-              Start Free Trial 
-              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+            
             <Button size="lg" variant="outline">
               Schedule a Demo
             </Button>
           </div>
           
-          <p className="mt-6 text-sm text-muted-foreground">
-            No credit card required. 14-day free trial.
-          </p>
+          
         </div>
       </div>
     </section>;
 };
-
 export default CTA;
