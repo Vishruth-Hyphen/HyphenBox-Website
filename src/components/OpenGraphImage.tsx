@@ -20,10 +20,10 @@ const OpenGraphImage: React.FC = () => {
       
       {/* Main content with enhanced visual appeal */}
       <div className="z-10 flex flex-col items-center gap-6 backdrop-blur-sm bg-white/10 p-10 rounded-xl border border-white/20 shadow-lg w-4/5">
-        {/* Logo */}
+        {/* Logo - using an absolute URL that's more likely to be accessible to WhatsApp */}
         <div className="mb-2">
           <img 
-            src="/og-image.png" 
+            src="https://hyphenbox.com/lovable-uploads/3c26d8b0-3f8b-4a55-a617-e62da83daf42.png" 
             alt="HyphenBox Logo" 
             className="h-20 object-contain"
           />
