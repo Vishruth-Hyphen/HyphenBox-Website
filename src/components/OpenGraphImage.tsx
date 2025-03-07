@@ -1,3 +1,4 @@
+
 import React from "react";
 
 const OpenGraphImage: React.FC = () => {
@@ -16,21 +17,19 @@ const OpenGraphImage: React.FC = () => {
         <div className="absolute top-1/2 left-1/4 w-32 h-1 bg-white/40 rounded-full rotate-45"></div>
         <div className="absolute top-1/3 right-1/3 w-24 h-1 bg-white/40 rounded-full -rotate-45"></div>
       </div>
-      {/* Add some padding to the top */}
-      <div className="mt-12"></div>
-      {/* Main content with enhanced visual appeal */}
       
+      {/* Main content with enhanced visual appeal */}
       <div className="z-10 flex flex-col items-center gap-6 backdrop-blur-sm bg-white/10 p-10 rounded-xl border border-white/20 shadow-lg w-4/5">
         {/* Logo */}
         <div className="mb-2">
           <img 
-            src="/lovable-uploads/logo.png" 
+            src="/og-image.png" 
             alt="HyphenBox Logo" 
             className="h-20 object-contain"
           />
         </div>
         
-        {/* Tagline with more visual impact - Using the copy from the hero image */}
+        {/* Tagline with more visual impact */}
         <h2 className="text-5xl font-extrabold text-center leading-tight max-w-3xl mb-2 text-white drop-shadow-lg">
           The Second Cursor That Guides Your Users
         </h2>
