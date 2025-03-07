@@ -1,7 +1,6 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
 
 const CTA: React.FC = () => {
   return <section className="py-20 relative overflow-hidden">
@@ -20,19 +19,11 @@ const CTA: React.FC = () => {
             Join hundreds of forward-thinking companies that are using HyphenBox to improve user adoption, reduce support costs, and deliver exceptional experiences.
           </p>
           
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="group">
-              Start Free Trial 
-              <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-            </Button>
+          <div className="flex justify-center">
             <Button size="lg" variant="outline">
               Schedule a Demo
             </Button>
           </div>
-          
-          <p className="mt-6 text-sm text-muted-foreground">
-            No credit card required. 14-day free trial.
-          </p>
         </div>
       </div>
     </section>;
