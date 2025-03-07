@@ -1,7 +1,7 @@
 
 import React from "react";
 import { Button } from "@/components/ui/button";
-import { EnvelopeOpenIcon } from "lucide-react";
+import { MailIcon } from "lucide-react";
 
 const ComingSoon: React.FC = () => {
   return (
@@ -28,7 +28,7 @@ const ComingSoon: React.FC = () => {
           
           {/* Optional: Contact button */}
           <Button variant="outline" className="group">
-            <EnvelopeOpenIcon className="mr-2 h-4 w-4" />
+            <MailIcon className="mr-2 h-4 w-4" />
             Contact Us
           </Button>
         </div>
