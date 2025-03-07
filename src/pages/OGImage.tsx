@@ -9,7 +9,7 @@ const OGImage: React.FC = () => {
     document.body.style.overflow = "hidden";
     document.body.style.margin = "0";
     document.body.style.padding = "0";
-    document.body.style.background = "#000";
+    document.body.style.background = "#0055B3";
     
     // Clean up
     return () => {
@@ -21,7 +21,7 @@ const OGImage: React.FC = () => {
   }, []);
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-black">
+    <div className="flex items-center justify-center min-h-screen bg-blue-900">
       <OpenGraphImage />
     </div>
   );
