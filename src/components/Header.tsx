@@ -1,9 +1,10 @@
 
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import { Button } from "@/components/ui/button";
 
 const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const headerButtonRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -12,6 +13,18 @@ const Header: React.FC = () => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  useEffect(() => {
+    // Initialize Google Calendar scheduling button after component mounts
+    if (headerButtonRef.current && window.calendar?.schedulingButton) {
+      window.calendar.schedulingButton.load({
+        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
+        color: '#039BE5',
+        label: "Get Started",
+        target: headerButtonRef.current,
+      });
+    }
+  }, [headerButtonRef.current]);
 
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-3 glass shadow-sm" : "py-5 bg-transparent"}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -28,8 +41,8 @@ const Header: React.FC = () => {
           </a>
         </nav>
         
-        <div className="flex items-center gap-4">
-          <Button className="font-normal">Get Started</Button>
+        <div className="flex items-center gap-4" ref={headerButtonRef}>
+          {/* The Google Calendar scheduling button will be inserted here */}
         </div>
       </div>
     </header>;
