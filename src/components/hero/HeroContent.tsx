@@ -1,23 +1,9 @@
 
-import React, { useEffect, useRef } from "react";
+import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const HeroContent: React.FC = () => {
-  const heroButtonRef = useRef<HTMLDivElement>(null);
-  
-  useEffect(() => {
-    // Initialize Google Calendar scheduling button after component mounts
-    if (heroButtonRef.current && window.calendar?.schedulingButton) {
-      window.calendar.schedulingButton.load({
-        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
-        color: '#039BE5',
-        label: "Get Started",
-        target: heroButtonRef.current,
-      });
-    }
-  }, [heroButtonRef.current]);
-
   return (
     <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 animate-slide-right">
       <div className="inline-block px-3 py-1 mb-6 rounded-full bg-primary/10 text-primary animate-fade-in">
@@ -32,8 +18,11 @@ const HeroContent: React.FC = () => {
         interactive guides. Help your users master your product without frustration.
       </p>
       
-      <div className="flex flex-col sm:flex-row gap-4" ref={heroButtonRef}>
-        {/* The Google Calendar scheduling button will be inserted here */}
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Button size="lg" className="group">
+          Get Started 
+          <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
+        </Button>
       </div>
     </div>
   );
