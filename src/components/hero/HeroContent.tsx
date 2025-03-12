@@ -12,11 +12,11 @@ const HeroContent: React.FC = () => {
       window.calendar.schedulingButton.load({
         url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
         color: '#039BE5',
-        label: "Get Started",
+        label: "Book a demo",
         target: heroButtonRef.current,
       });
     }
-  }, [heroButtonRef.current]);
+  }, []);
 
   return (
     <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 animate-slide-right">
@@ -32,8 +32,11 @@ const HeroContent: React.FC = () => {
         interactive guides. Help your users master your product without frustration.
       </p>
       
-      <div className="flex flex-col sm:flex-row gap-4" ref={heroButtonRef}>
-        {/* The Google Calendar scheduling button will be inserted here */}
+      <div className="flex flex-col sm:flex-row gap-4">
+        <Button size="lg" className="gap-2">
+          Get Started <ArrowRight className="h-4 w-4" />
+        </Button>
+        <div ref={heroButtonRef} style={{ display: 'none' }}></div>
       </div>
     </div>
   );

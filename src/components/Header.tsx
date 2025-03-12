@@ -20,11 +20,11 @@ const Header: React.FC = () => {
       window.calendar.schedulingButton.load({
         url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
         color: '#039BE5',
-        label: "Get Started",
+        label: "Book a demo",
         target: headerButtonRef.current,
       });
     }
-  }, [headerButtonRef.current]);
+  }, []);
 
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-3 glass shadow-sm" : "py-5 bg-transparent"}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
@@ -41,8 +41,9 @@ const Header: React.FC = () => {
           </a>
         </nav>
         
-        <div className="flex items-center gap-4" ref={headerButtonRef}>
-          {/* The Google Calendar scheduling button will be inserted here */}
+        <div className="flex items-center gap-4">
+          <Button>Get Started</Button>
+          <div ref={headerButtonRef} style={{ display: 'none' }}></div>
         </div>
       </div>
     </header>;
