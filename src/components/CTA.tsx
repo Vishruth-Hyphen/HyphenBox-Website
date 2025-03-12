@@ -3,6 +3,10 @@ import React from "react";
 import { Button } from "@/components/ui/button";
 
 const CTA: React.FC = () => {
+  const openCalendarPopup = () => {
+    window.open("https://calendar.app.google/mwipUSjbjHafkua97", "_blank", "width=600,height=700");
+  };
+
   return <section className="py-20 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-96 h-96 bg-primary/5 rounded-full blur-3xl -translate-y-1/2 translate-x-1/3"></div>
       <div className="absolute bottom-0 left-0 w-96 h-96 bg-accent/5 rounded-full blur-3xl translate-y-1/2 -translate-x-1/3"></div>
@@ -20,7 +24,7 @@ const CTA: React.FC = () => {
           </p>
           
           <div className="flex justify-center">
-            <Button size="lg" variant="outline">
+            <Button size="lg" variant="outline" onClick={openCalendarPopup}>
               Schedule a Demo
             </Button>
           </div>

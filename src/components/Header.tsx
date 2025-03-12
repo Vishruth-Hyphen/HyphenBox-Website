@@ -13,6 +13,10 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  const openCalendarPopup = () => {
+    window.open("https://calendar.app.google/mwipUSjbjHafkua97", "_blank", "width=600,height=700");
+  };
+
   return <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? "py-3 glass shadow-sm" : "py-5 bg-transparent"}`}>
       <div className="container mx-auto px-4 flex items-center justify-between">
         <div className="flex items-center gap-2">
@@ -29,7 +33,7 @@ const Header: React.FC = () => {
         </nav>
         
         <div className="flex items-center gap-4">
-          <Button className="font-normal">Get Started</Button>
+          <Button className="font-normal" onClick={openCalendarPopup}>Get Started</Button>
         </div>
       </div>
     </header>;
