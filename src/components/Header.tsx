@@ -41,10 +41,7 @@ const Header: React.FC = () => {
           </a>
         </nav>
         
-        <div className="flex items-center gap-4">
-          <Button>Get Started</Button>
-          <div ref={headerButtonRef} style={{ display: 'none' }}></div>
-        </div>
+        <div ref={headerButtonRef}></div>
       </div>
     </header>;
 };

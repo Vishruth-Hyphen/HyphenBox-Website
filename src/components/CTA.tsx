@@ -11,7 +11,7 @@ const CTA: React.FC = () => {
       window.calendar.schedulingButton.load({
         url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
         color: '#039BE5',
-        label: "Book a demo",
+        label: "Schedule a Demo",
         target: ctaButtonRef.current,
       });
     }
@@ -34,8 +34,7 @@ const CTA: React.FC = () => {
           </p>
           
           <div className="flex justify-center">
-            <Button size="lg">Schedule a Demo</Button>
-            <div ref={ctaButtonRef} style={{ display: 'none' }}></div>
+            <div ref={ctaButtonRef}></div>
           </div>
         </div>
       </div>

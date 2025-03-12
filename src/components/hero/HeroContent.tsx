@@ -4,17 +4,29 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const HeroContent: React.FC = () => {
-  const heroButtonRef = useRef<HTMLDivElement>(null);
+  const getStartedRef = useRef<HTMLDivElement>(null);
+  const bookDemoRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Initialize Google Calendar scheduling button after component mounts
-    if (heroButtonRef.current && window.calendar?.schedulingButton) {
-      window.calendar.schedulingButton.load({
-        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
-        color: '#039BE5',
-        label: "Book a demo",
-        target: heroButtonRef.current,
-      });
+    // Initialize Google Calendar scheduling buttons after component mounts
+    if (window.calendar?.schedulingButton) {
+      if (getStartedRef.current) {
+        window.calendar.schedulingButton.load({
+          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
+          color: '#4285F4',
+          label: "Get Started",
+          target: getStartedRef.current,
+        });
+      }
+      
+      if (bookDemoRef.current) {
+        window.calendar.schedulingButton.load({
+          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
+          color: '#039BE5',
+          label: "Book a demo",
+          target: bookDemoRef.current,
+        });
+      }
     }
   }, []);
 
@@ -33,10 +45,8 @@ const HeroContent: React.FC = () => {
       </p>
       
       <div className="flex flex-col sm:flex-row gap-4">
-        <Button size="lg" className="gap-2">
-          Get Started <ArrowRight className="h-4 w-4" />
-        </Button>
-        <div ref={heroButtonRef} style={{ display: 'none' }}></div>
+        <div ref={getStartedRef}></div>
+        <div ref={bookDemoRef}></div>
       </div>
     </div>
   );
