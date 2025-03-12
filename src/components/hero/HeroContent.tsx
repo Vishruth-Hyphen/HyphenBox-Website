@@ -4,31 +4,19 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
 
 const HeroContent: React.FC = () => {
-  const getStartedRef = useRef<HTMLDivElement>(null);
-  const bookDemoRef = useRef<HTMLDivElement>(null);
+  const heroButtonRef = useRef<HTMLDivElement>(null);
   
   useEffect(() => {
-    // Initialize Google Calendar scheduling buttons after component mounts
-    if (window.calendar?.schedulingButton) {
-      if (getStartedRef.current) {
-        window.calendar.schedulingButton.load({
-          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
-          color: '#4285F4',
-          label: "Get Started",
-          target: getStartedRef.current,
-        });
-      }
-      
-      if (bookDemoRef.current) {
-        window.calendar.schedulingButton.load({
-          url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
-          color: '#039BE5',
-          label: "Book a demo",
-          target: bookDemoRef.current,
-        });
-      }
+    // Initialize Google Calendar scheduling button after component mounts
+    if (heroButtonRef.current && window.calendar?.schedulingButton) {
+      window.calendar.schedulingButton.load({
+        url: 'https://calendar.google.com/calendar/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8?gv=true',
+        color: '#039BE5',
+        label: "Get Started",
+        target: heroButtonRef.current,
+      });
     }
-  }, []);
+  }, [heroButtonRef.current]);
 
   return (
     <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 animate-slide-right">
@@ -44,9 +32,8 @@ const HeroContent: React.FC = () => {
         interactive guides. Help your users master your product without frustration.
       </p>
       
-      <div className="flex flex-col sm:flex-row gap-4">
-        <div ref={getStartedRef}></div>
-        <div ref={bookDemoRef}></div>
+      <div className="flex flex-col sm:flex-row gap-4" ref={heroButtonRef}>
+        {/* The Google Calendar scheduling button will be inserted here */}
       </div>
     </div>
   );
