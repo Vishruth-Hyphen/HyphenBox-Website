@@ -43,7 +43,7 @@ const features = [
 
 const Features: React.FC = () => {
   return (
-    <section id="features" className="py-20">
+    <section id="features" className="py-20 pb-10">
       <div className="section-container">
         <div className="inline-block px-3 py-1 mb-6 rounded-full bg-primary/10 text-primary text-center mx-auto">
           Features
@@ -67,7 +67,7 @@ const Features: React.FC = () => {
           ))}
         </div>
         
-        <div className="mt-16 glass rounded-lg p-8">
+        <div className="mt-16 mb-0 glass rounded-lg p-8">
           <div className="flex flex-col md:flex-row items-center">
             <div className="w-full md:w-2/3 mb-6 md:mb-0 md:pr-8">
               <h3 className="text-2xl font-medium mb-4">Advanced features for enterprise users</h3>
