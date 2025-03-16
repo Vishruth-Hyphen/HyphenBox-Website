@@ -76,8 +76,7 @@ const Features: React.FC = () => {
                   "Custom branding and theming options",
                   "Advanced user segmentation and targeting",
                   "Integration with your existing analytics tools",
-                  "Multi-language support for global teams",
-                  "Priority support and dedicated success manager"
+                  "Multi-language support for global teams"
                 ].map((item, i) => (
                   <div key={i} className="flex items-start">
                     <div className="mr-2 mt-1 bg-primary/20 rounded-full p-0.5">
