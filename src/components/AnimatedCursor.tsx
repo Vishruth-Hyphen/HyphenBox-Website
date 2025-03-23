@@ -53,7 +53,7 @@ const AnimatedCursor: React.FC<AnimatedCursorProps> = ({
         className
       )}
     >
-      {/* Improved arrow pointer design */}
+      {/* Symmetrical arrow pointer design */}
       <svg 
         width="24" 
         height="24" 
@@ -66,7 +66,7 @@ const AnimatedCursor: React.FC<AnimatedCursorProps> = ({
         )}
       >
         <path 
-          d="M4.5 2L19.5 13L13 14.5L10.5 22L4.5 2Z" 
+          d="M5 2L20 12L13 14L11 22L5 2Z" 
           fill="white"
           stroke={color.startsWith('bg-') ? 'rgb(37, 99, 235)' : color}
           strokeWidth="2"
