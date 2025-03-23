@@ -86,34 +86,13 @@ const DemoAnimation: React.FC<DemoAnimationProps> = ({ demoRef }) => {
 
   return (
     <>
-      <div ref={cursorRef} className="absolute top-0 left-0 pointer-events-none z-20 transition-opacity duration-300" style={{
+      <div ref={cursorRef} className="absolute top-0 left-0 w-6 h-6 pointer-events-none z-20 transition-opacity duration-300" style={{
         transform: 'translate(140px, 55px)'
       }}>
         <div className="relative w-full h-full">
-          {/* Symmetrical arrow cursor */}
-          <svg 
-            width="24" 
-            height="24" 
-            viewBox="0 0 24 24" 
-            fill="none" 
-            xmlns="http://www.w3.org/2000/svg"
-            className="w-6 h-6 animate-pulse-soft"
-          >
-            <path 
-              d="M5 2L20 12L13 14L11 22L5 2Z" 
-              fill="white"
-              stroke="rgb(37, 99, 235)"
-              strokeWidth="2"
-              strokeLinejoin="round"
-              className="drop-shadow-md"
-            />
-          </svg>
-          
-          {/* Tooltip box positioned to the right */}
-          <div 
-            ref={messageRef} 
-            className="absolute top-1/2 left-full ml-2 -translate-y-1/2 glass rounded-md px-3 py-1.5 text-xs whitespace-nowrap transition-opacity duration-300 shadow-sm bg-white/90 backdrop-blur-md border border-blue-100"
-          >
+          <div className="absolute inset-0 bg-primary rounded-full transform scale-75 animate-pulse-soft"></div>
+          <div className="absolute inset-0 border-2 border-white rounded-full"></div>
+          <div ref={messageRef} className="absolute -top-8 -left-1 glass rounded px-2 py-1 text-xs whitespace-nowrap transition-opacity duration-300 shadow-sm">
             Click on this sidebar item
           </div>
         </div>
