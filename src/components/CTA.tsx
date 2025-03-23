@@ -17,11 +17,8 @@ const CTA: React.FC = () => {
             Get Started Today
           </div>
           <h2 className="text-3xl md:text-4xl font-bold mb-6">
-            Transform Your User Experience
+            Maximize usage. Minimize tickets
           </h2>
-          <p className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto">
-            Join hundreds of forward-thinking companies that are using HyphenBox to improve user adoption, reduce support costs, and deliver exceptional experiences.
-          </p>
           
           <div className="flex justify-center">
             <Button size="lg" variant="outline" onClick={openCalendarPopup}>
