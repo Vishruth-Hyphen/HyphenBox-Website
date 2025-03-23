@@ -1,15 +1,11 @@
-
 import React from "react";
 import { Button } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-
 const HeroContent: React.FC = () => {
   const openCalendarPopup = () => {
     window.open("https://calendar.app.google/mwipUSjbjHafkua97", "_blank", "width=600,height=700");
   };
-
-  return (
-    <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 animate-slide-right">
+  return <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 animate-slide-right">
       <div className="inline-block px-3 py-1 mb-6 rounded-full bg-primary/10 text-primary animate-fade-in">
         Introduce with confidence
       </div>
@@ -17,10 +13,7 @@ const HeroContent: React.FC = () => {
         The Second Cursor That <br />
         <span className="text-primary">Guides Your Users</span>
       </h1>
-      <p className="text-lg text-muted-foreground mb-8 max-w-xl">
-        Autonomous navigation assistance that indexes all user flows and creates
-        interactive guides. Help your users master your product without frustration.
-      </p>
+      <p className="text-lg text-muted-foreground mb-8 max-w-xl">Autonomous, step-by-step guidance embedded directly into your product. Increase product adoption, boost usage, and significantly cut down support tickets, without lifting a finger.</p>
       
       <div className="flex flex-col sm:flex-row gap-4">
         <Button size="lg" className="group" onClick={openCalendarPopup}>
@@ -28,8 +21,6 @@ const HeroContent: React.FC = () => {
           <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
         </Button>
       </div>
-    </div>
-  );
+    </div>;
 };
-
 export default HeroContent;
