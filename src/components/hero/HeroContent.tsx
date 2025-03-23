@@ -13,7 +13,7 @@ const HeroContent: React.FC = () => {
         The Second Cursor That <br />
         <span className="text-primary">Guides Your Users</span>
       </h1>
-      <p className="text-lg text-muted-foreground mb-8 max-w-xl">Autonomous, step-by-step guidance embedded directly into your product. Increase product adoption, boost usage, and significantly cut down support tickets, without lifting a finger.</p>
+      <p className="text-lg text-muted-foreground mb-8 max-w-xl">Autonomous, step-by-step guidance embedded directly into your product. Increase product adoption, boost usage, and significantly cut down support tickets, with zero manual effort.</p>
       
       <div className="flex flex-col sm:flex-row gap-4">
         <Button size="lg" className="group" onClick={openCalendarPopup}>
