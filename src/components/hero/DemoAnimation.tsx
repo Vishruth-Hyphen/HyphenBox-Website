@@ -35,19 +35,21 @@ const DemoAnimation: React.FC<DemoAnimationProps> = ({ demoRef }) => {
         message: "Click Submit"
       }];
 
+      // Initially position the cursor at the first position to avoid jumping
+      if (cursorRef.current) {
+        cursorRef.current.style.transition = "none";
+        cursorRef.current.style.transform = `translate(${paths[0].x}px, ${paths[0].y}px)`;
+        
+        // Force a reflow to ensure the transition removal takes effect
+        cursorRef.current.offsetHeight;
+      }
+
       if (messageRef.current) {
         messageRef.current.style.opacity = "0";
         setTimeout(() => {
-          if (cursorRef.current && messageRef.current) {
-            const lastPosition = paths[paths.length - 1];
-            cursorRef.current.style.transform = `translate(${lastPosition.x}px, ${lastPosition.y}px)`;
+          if (messageRef.current) {
             messageRef.current.textContent = paths[0].message;
             messageRef.current.style.opacity = "1";
-            setTimeout(() => {
-              if (cursorRef.current) {
-                cursorRef.current.style.transform = `translate(${paths[0].x}px, ${paths[0].y}px)`;
-              }
-            }, 300);
           }
         }, 300);
       }
@@ -55,8 +57,11 @@ const DemoAnimation: React.FC<DemoAnimationProps> = ({ demoRef }) => {
       paths.forEach((position, index) => {
         setTimeout(() => {
           if (cursorRef.current && messageRef.current) {
+            // Enable smooth transitions after the initial positioning
             cursorRef.current.style.transition = "transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1)";
             cursorRef.current.style.transform = `translate(${position.x}px, ${position.y}px)`;
+            
+            // Handle message update
             messageRef.current.style.opacity = "0";
             setTimeout(() => {
               if (messageRef.current) {
@@ -64,6 +69,8 @@ const DemoAnimation: React.FC<DemoAnimationProps> = ({ demoRef }) => {
                 messageRef.current.style.opacity = "1";
               }
             }, 300);
+            
+            // Handle click animation
             setTimeout(() => {
               if (cursorRef.current) {
                 cursorRef.current.classList.add("cursor-click");
@@ -79,8 +86,24 @@ const DemoAnimation: React.FC<DemoAnimationProps> = ({ demoRef }) => {
       });
     };
 
+    // Run animation initially
     animateCursor();
-    const interval = setInterval(animateCursor, 6000);
+    
+    // Ensure cursor starts at correct position when animation restarts
+    const interval = setInterval(() => {
+      if (cursorRef.current) {
+        // Disable transition before resetting position
+        cursorRef.current.style.transition = "none";
+        cursorRef.current.style.transform = `translate(140px, 55px)`;
+        
+        // Force a reflow before animating again
+        cursorRef.current.offsetHeight;
+        
+        // Run animation after repositioning
+        setTimeout(animateCursor, 50);
+      }
+    }, 6000);
+    
     return () => clearInterval(interval);
   }, [demoRef]);
 
