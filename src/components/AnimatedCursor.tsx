@@ -21,9 +21,9 @@ const AnimatedCursor: React.FC<AnimatedCursorProps> = ({
   const [visible, setVisible] = useState(false);
 
   const sizeClasses = {
-    small: "w-3 h-3",
-    medium: "w-4 h-4", 
-    large: "w-5 h-5"
+    small: "w-6 h-6",
+    medium: "w-7 h-7", 
+    large: "w-8 h-8"
   };
 
   useEffect(() => {
@@ -47,15 +47,34 @@ const AnimatedCursor: React.FC<AnimatedCursorProps> = ({
     <div 
       ref={cursorRef}
       className={cn(
-        "fixed top-0 left-0 pointer-events-none z-50 rounded-full -translate-x-1/2 -translate-y-1/2",
-        sizeClasses[size],
-        color,
+        "fixed top-0 left-0 pointer-events-none z-50 -translate-x-1/2 -translate-y-1/2",
         animated && "transition-transform duration-100",
-        pulseEffect && "animate-pulse-soft",
         visible ? "opacity-100" : "opacity-0",
         className
       )}
-    />
+    >
+      {/* Apple-style sleek arrow pointer */}
+      <svg 
+        width="24" 
+        height="24" 
+        viewBox="0 0 24 24" 
+        fill="none" 
+        xmlns="http://www.w3.org/2000/svg"
+        className={cn(
+          sizeClasses[size],
+          pulseEffect && "animate-pulse-soft"
+        )}
+      >
+        <path 
+          d="M5.5 2.5L20 13.5L13 14.5L11 21.5L5.5 2.5Z" 
+          fill="white"
+          stroke={color.startsWith('bg-') ? 'rgb(37, 99, 235)' : color}
+          strokeWidth="1.5"
+          strokeLinejoin="round"
+          className="drop-shadow-sm"
+        />
+      </svg>
+    </div>
   );
 };
 
