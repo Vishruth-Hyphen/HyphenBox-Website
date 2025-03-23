@@ -53,7 +53,7 @@ const AnimatedCursor: React.FC<AnimatedCursorProps> = ({
         className
       )}
     >
-      {/* Apple-style sleek arrow pointer */}
+      {/* Improved arrow pointer design */}
       <svg 
         width="24" 
         height="24" 
@@ -66,12 +66,12 @@ const AnimatedCursor: React.FC<AnimatedCursorProps> = ({
         )}
       >
         <path 
-          d="M5.5 2.5L20 13.5L13 14.5L11 21.5L5.5 2.5Z" 
+          d="M4.5 2L19.5 13L13 14.5L10.5 22L4.5 2Z" 
           fill="white"
           stroke={color.startsWith('bg-') ? 'rgb(37, 99, 235)' : color}
-          strokeWidth="1.5"
+          strokeWidth="2"
           strokeLinejoin="round"
-          className="drop-shadow-sm"
+          className="drop-shadow-md"
         />
       </svg>
     </div>

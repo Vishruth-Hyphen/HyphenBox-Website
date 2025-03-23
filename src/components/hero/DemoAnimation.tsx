@@ -90,7 +90,7 @@ const DemoAnimation: React.FC<DemoAnimationProps> = ({ demoRef }) => {
         transform: 'translate(140px, 55px)'
       }}>
         <div className="relative w-full h-full">
-          {/* Apple-style sleek arrow cursor */}
+          {/* Improved arrow cursor */}
           <svg 
             width="24" 
             height="24" 
@@ -100,12 +100,12 @@ const DemoAnimation: React.FC<DemoAnimationProps> = ({ demoRef }) => {
             className="w-6 h-6 animate-pulse-soft"
           >
             <path 
-              d="M5.5 2.5L20 13.5L13 14.5L11 21.5L5.5 2.5Z" 
+              d="M4.5 2L19.5 13L13 14.5L10.5 22L4.5 2Z" 
               fill="white"
               stroke="rgb(37, 99, 235)"
-              strokeWidth="1.5"
+              strokeWidth="2"
               strokeLinejoin="round"
-              className="drop-shadow-sm"
+              className="drop-shadow-md"
             />
           </svg>
           
