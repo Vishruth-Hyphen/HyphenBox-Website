@@ -38,7 +38,7 @@ const Index = () => {
 
   return (
     <Layout>
-      <AnimatedCursor color="bg-primary/60" size="small" pulseEffect />
+      <AnimatedCursor color="bg-blue-500" size="small" showInstructions={false} />
       <Hero />
       <Features />
       <HowItWorks />
