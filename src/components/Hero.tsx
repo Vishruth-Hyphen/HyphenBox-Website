@@ -1,10 +1,46 @@
-
-import React from "react";
+import React, { useState } from "react";
 import HeroContent from "./hero/HeroContent";
 import DemoInterface from "./hero/DemoInterface";
 import TrustedCompanies from "./hero/TrustedCompanies";
+import { supabase } from "../lib/supabase";
 
 const Hero: React.FC = () => {
+  const [email, setEmail] = React.useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [error, setError] = useState<string | null>(null);
+
+  const calendarUrl = "https://calendar.google.com/calendar/u/0/appointments/schedules/AcZssZ3Mf8BsXtRdb-QFwzpMqqDUjANUxIrzeKr6uwrfY4p8L2-_LWRf_u2SonX1AqXkv6r6KRQpWqM8";
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setIsSubmitting(true);
+    setError(null);
+
+    try {
+      // Insert email into Supabase
+      const { error: supabaseError } = await supabase
+        .from('landing_page_visitors')
+        .insert([
+          { 
+            email: email,
+            created_at: new Date().toISOString()
+          }
+        ]);
+
+      if (supabaseError) throw supabaseError;
+
+      // Clear form and redirect to calendar
+      setEmail('');
+      window.location.href = calendarUrl;
+      
+    } catch (err) {
+      console.error('Error storing email:', err);
+      setError('Failed to submit email. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
   return (
     <>
       <section className="pt-32 pb-20 overflow-hidden">
@@ -12,6 +48,32 @@ const Hero: React.FC = () => {
           <div className="flex flex-col lg:flex-row items-center">
             <HeroContent />
             <DemoInterface />
+          </div>
+          
+          {/* Email Collection Form */}
+          <div className="max-w-md mx-auto mt-8">
+            <form onSubmit={handleSubmit} className="flex flex-col gap-2">
+              <div className="flex gap-2">
+                <input
+                  type="email"
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  placeholder="Your company email"
+                  className="flex-1 px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:border-blue-500 transition-colors"
+                  required
+                />
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
+                >
+                  {isSubmitting ? 'Submitting...' : 'Get Early Access'}
+                </button>
+              </div>
+              {error && (
+                <p className="text-red-500 text-sm mt-1">{error}</p>
+              )}
+            </form>
           </div>
         </div>
         

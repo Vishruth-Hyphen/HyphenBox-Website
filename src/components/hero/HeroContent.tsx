@@ -15,12 +15,12 @@ const HeroContent: React.FC = () => {
       </h1>
       <p className="text-lg text-muted-foreground mb-8 max-w-xl">Autonomous, step-by-step guidance embedded directly into your product. Increase product adoption, boost usage, and significantly cut down support tickets, with zero manual effort.</p>
       
-      <div className="flex flex-col sm:flex-row gap-4">
+      {/* <div className="flex flex-col sm:flex-row gap-4">
         <Button size="lg" className="group" onClick={openCalendarPopup}>
           Get Started 
           <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
         </Button>
-      </div>
+      </div> */}
     </div>;
 };
 export default HeroContent;
