@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setError(null);
-
+    
     try {
       // Insert email into Supabase
       const { error: supabaseError } = await supabase
@@ -27,15 +27,23 @@ const Hero: React.FC = () => {
           }
         ]);
 
-      if (supabaseError) throw supabaseError;
+      if (supabaseError) {
+        console.error('Supabase error details:', supabaseError);
+        
+        if (supabaseError.code === '42501' || supabaseError.message.includes('permission denied')) {
+          throw new Error('Permission denied. Please contact support.');
+        }
+        
+        throw supabaseError;
+      }
 
       // Clear form and redirect to calendar
       setEmail('');
       window.location.href = calendarUrl;
       
-    } catch (err) {
+    } catch (err: any) {
       console.error('Error storing email:', err);
-      setError('Failed to submit email. Please try again.');
+      setError(err.message || 'Failed to submit email. Please try again.');
     } finally {
       setIsSubmitting(false);
     }
