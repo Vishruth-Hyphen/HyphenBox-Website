@@ -3,7 +3,6 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import OGImage from "./pages/OGImage";
-import ThankYou from './pages/ThankYou';
 import "./App.css";
 
 // Create a client
@@ -16,7 +15,6 @@ function App() {
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/og-image" element={<OGImage />} />
-          <Route path="/thank-you" element={<ThankYou />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

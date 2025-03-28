@@ -37,9 +37,9 @@ const Hero: React.FC = () => {
         throw supabaseError;
       }
 
-      // Clear form and redirect to thank you page instead of directly to calendar
+      // Clear form and redirect directly to calendar URL instead of thank-you page
       setEmail('');
-      window.location.href = "/thank-you";
+      window.location.href = calendarUrl;
       
     } catch (err: any) {
       console.error('Error storing email:', err);
