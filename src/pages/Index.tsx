@@ -1,5 +1,5 @@
-
 import React, { useEffect } from "react";
+import Head from "next/head";
 import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -38,6 +38,9 @@ const Index = () => {
 
   return (
     <Layout>
+      <Head>
+        <script src="https://content.unusual.ai/unusual.js" data-domain-id="d3a3db33-5afc-4e50-a0c2-4a549519d684"></script>
+      </Head>
       <AnimatedCursor color="bg-primary/60" size="small" pulseEffect />
       <Hero />
       <Features />
