@@ -46,8 +46,8 @@ const Index = () => {
     <Layout>
       <AnimatedCursor color="bg-primary/60" size="small" pulseEffect />
       <Hero />
-      <Features />
       <HowItWorks />
+      <Features />
       <Testimonials />
       <CTA />
     </Layout>
