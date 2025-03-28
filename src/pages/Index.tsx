@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import Head from "next/head";
 import Layout from "@/components/Layout";
 import Hero from "@/components/Hero";
 import Features from "@/components/Features";
@@ -11,6 +10,13 @@ import AnimatedCursor from "@/components/AnimatedCursor";
 const Index = () => {
   // Simulate preloading for smooth transitions
   useEffect(() => {
+    // Add the Unusual.ai script here
+    const script = document.createElement('script');
+    script.src = "https://content.unusual.ai/unusual.js";
+    script.setAttribute('data-domain-id', "d3a3db33-5afc-4e50-a0c2-4a549519d684");
+    document.head.appendChild(script);
+    
+    // Rest of your existing useEffect code
     const preloadImages = () => {
       // This would normally preload actual images
       console.log("Preloading assets for smooth experience");
@@ -38,9 +44,6 @@ const Index = () => {
 
   return (
     <Layout>
-      <Head>
-        <script src="https://content.unusual.ai/unusual.js" data-domain-id="d3a3db33-5afc-4e50-a0c2-4a549519d684"></script>
-      </Head>
       <AnimatedCursor color="bg-primary/60" size="small" pulseEffect />
       <Hero />
       <Features />

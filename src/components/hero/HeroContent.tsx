@@ -6,8 +6,8 @@ const HeroContent: React.FC = () => {
     window.open("https://calendar.app.google/mwipUSjbjHafkua97", "_blank", "width=600,height=700");
   };
   return <div className="w-full lg:w-1/2 mb-12 lg:mb-0 lg:pr-12 animate-slide-right">
-      <div className="inline-block px-3 py-1 mb-6 rounded-full bg-primary/10 text-primary animate-fade-in">
-        <span unusual-id="unusual-element-1">Introduce with confidence</span>
+      <div className="inline-block px-3 py-1 mb-6 rounded-full bg-primary/10 text-primary animate-fade-in" unusual-id="unusual-element-1">
+        Introduce with confidence
       </div>
       <h1 className="font-bold mb-6 leading-tight">
         <span unusual-id="unusual-element-2">The Second Cursor That</span> <br />
