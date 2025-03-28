@@ -37,9 +37,9 @@ const Hero: React.FC = () => {
         throw supabaseError;
       }
 
-      // Clear form and redirect to calendar
+      // Clear form and redirect to thank you page instead of directly to calendar
       setEmail('');
-      window.location.href = calendarUrl;
+      window.location.href = "/thank-you";
       
     } catch (err: any) {
       console.error('Error storing email:', err);
@@ -73,6 +73,7 @@ const Hero: React.FC = () => {
                 <button
                   type="submit"
                   disabled={isSubmitting}
+                  unusual-conversion-id="get-early-access-button"
                   className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors disabled:opacity-50"
                 >
                   {isSubmitting ? 'Submitting...' : 'Get Early Access'}
