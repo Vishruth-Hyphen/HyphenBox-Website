@@ -57,7 +57,7 @@ const HowItWorks: React.FC = () => {
         </div>
         <h2 className="section-title mb-6">Simple integration, powerful results</h2>
         <p className="section-subtitle max-w-3xl">
-          Get up and running in minutes with our easy-to-integrate solution. No complex configuration required.
+          Get up and running in minutes with one line of code. 
         </p>
         
         <div className="flex flex-col lg:flex-row gap-12 items-center mt-12">
