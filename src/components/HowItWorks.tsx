@@ -1,283 +1,195 @@
-
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { Check, ArrowRight, Code, Database, Lightbulb, HelpCircle } from "lucide-react";
-import AnimatedCursor from "./AnimatedCursor";
-import { cn } from "@/lib/utils";
+import { ArrowRight, Download, Code, Play } from "lucide-react";
 
 const steps = [
   {
-    title: "Installation",
-    description: "Add our lightweight SDK to your application with just a few lines of code.",
-    image: "demo-installation.png",
-    icon: <Code className="w-5 h-5" />
+    id: "record",
+    title: "Record",
+    description: "Install our browser extension and record any user journey once. Click through your app normally - we'll capture every step.",
+    gif: "/recorder.gif",
+    details: [
+      "Install browser extension in 30 seconds",
+      "Click record and perform your workflow", 
+      "Automatic step detection and screenshots",
+      "Export ready-to-use guides"
+    ],
+    cta: "Download Extension",
+    icon: Download
   },
   {
-    title: "Indexing",
-    description: "Our system automatically analyzes and maps all user paths and interactions.",
-    image: "demo-indexing.png",
-    icon: <Database className="w-5 h-5" />
-  },
-  {
-    title: "Guide Creation",
-    description: "Intelligent algorithms create step-by-step guides for every user flow.",
-    image: "demo-guide-creation.png",
-    icon: <Lightbulb className="w-5 h-5" />
-  },
-  {
-    title: "User Assistance",
-    description: "Users can access guides on demand or receive proactive help when they seem stuck.",
-    image: "demo-user-assistance.png",
-    icon: <HelpCircle className="w-5 h-5" />
+    id: "integrate", 
+    title: "Integrate",
+    description: "Add one simple script tag to your website. No complex setup, no framework dependencies. Just copy, paste, and you're live.",
+    gif: null,
+    details: [
+      "Copy-paste integration",
+      "Works with any website or web app",
+      "No performance impact", 
+      "Instant deployment"
+    ],
+    code: `// Add to your website
+<script src="https://hyphenbox-clientsdk.pages.dev/flow.js"></script>
+
+// Initialize in your app
+<script>
+  window.hyphenSDKInstance = window.Hyphenbox.initialize({
+    apiKey: "your_api_key",
+    userId: "user123",  // Replace with real user ID
+    userName: "John Doe"  // Replace with real name
+  });
+</script>
+
+// That's it! 🚀 The help button will appear automatically`,
+    cta: "View Integration Guide",
+    icon: Code
   }
 ];
 
 const HowItWorks: React.FC = () => {
-  const [activeStep, setActiveStep] = useState(0);
-  const [animating, setAnimating] = useState(false);
-  
-  // Auto-rotate through steps
-  useEffect(() => {
-    const interval = setInterval(() => {
-      setAnimating(true);
-      setTimeout(() => {
-        setActiveStep((prev) => (prev + 1) % steps.length);
-        setAnimating(false);
-      }, 300);
-    }, 5000);
-    
-    return () => clearInterval(interval);
-  }, []);
-  
+  const [activeStep, setActiveStep] = useState("record");
+
+  const currentStep = steps.find(step => step.id === activeStep) || steps[0];
+
   return (
-    <section id="how-it-works" className="py-20 bg-gradient-to-b from-secondary/30 to-background">
-      <div className="section-container">
-        <div className="inline-block px-4 py-1.5 mb-6 rounded-full bg-primary/10 text-primary text-center mx-auto font-medium shadow-sm">
-          How It Works
-        </div>
-        <h2 className="section-title mb-6">Simple integration, powerful results</h2>
-        <p className="section-subtitle max-w-3xl">
-          Get up and running in minutes with one line of code. 
-        </p>
-        
-        <div className="flex flex-col lg:flex-row gap-12 items-center mt-12">
-          <div className="w-full lg:w-1/3">
-            <div className="space-y-4">
-              {steps.map((step, index) => (
-                <div 
-                  key={index}
-                  className={cn(
-                    "p-5 rounded-xl cursor-pointer transition-all duration-300 relative group",
-                    activeStep === index 
-                      ? "glass shadow-md border-l-4 border-l-primary translate-x-2" 
-                      : "hover:bg-white/50 border border-transparent hover:border-gray-100"
-                  )}
-                  onClick={() => {
-                    setAnimating(true);
-                    setTimeout(() => {
-                      setActiveStep(index);
-                      setAnimating(false);
-                    }, 300);
-                  }}
-                >
-                  <div className="flex items-center mb-3">
-                    <div className={cn(
-                      "w-10 h-10 rounded-lg flex items-center justify-center mr-4 transition-colors duration-300",
-                      activeStep === index ? "bg-primary text-white" : "bg-secondary text-primary/70 group-hover:bg-primary/10"
-                    )}>
-                      {step.icon || (index + 1)}
-                    </div>
-                    <h3 className={cn(
-                      "text-lg font-medium transition-colors",
-                      activeStep === index ? "text-primary" : "text-foreground/80"
-                    )}>
-                      {step.title}
-                    </h3>
-                  </div>
-                  <p className="text-muted-foreground ml-14">{step.description}</p>
-                  
-                  {activeStep === index && (
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-primary">
-                      <ArrowRight className="w-5 h-5 animate-pulse-soft" />
-                    </div>
-                  )}
-                </div>
-              ))}
-            </div>
-            
-            <div className="mt-8 ml-14">
-              <Button size="lg" className="group transition-all duration-300 hover:pr-7">
-                Read Documentation 
-                <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Button>
-            </div>
+    <section id="how-it-works" className="py-16 md:py-20 bg-gradient-to-b from-gray-50/30 to-white">
+      <div className="container mx-auto px-4 max-w-6xl">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-block px-3 py-1 mb-4 rounded-full bg-primary/10 text-primary text-sm font-medium">
+            How It Works
           </div>
-          
-          <div className="w-full lg:w-2/3">
-            <div className="glass rounded-xl overflow-hidden aspect-video relative shadow-lg border border-white/40">
-              <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-purple-50/30 opacity-70"></div>
+          <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            From Recording to <span className="text-primary">Results</span>
+          </h2>
+          <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
+            Two simple steps to transform how users interact with your product.
+          </p>
+        </div>
+
+        {/* Step Toggle Buttons */}
+        <div className="flex justify-center mb-8">
+          <div className="inline-flex bg-white rounded-xl p-1 shadow-sm border border-gray-200">
+            {steps.map((step, index) => {
+              const isActive = activeStep === step.id;
+              return (
+                <button
+                  key={step.id}
+                  onClick={() => setActiveStep(step.id)}
+                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                    isActive 
+                      ? 'bg-primary text-white shadow-sm' 
+                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  }`}
+                >
+                  Step {index + 1}: {step.title}
+                </button>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* Step Content */}
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
+          {/* Left side - Visual */}
+          <div className="order-2 lg:order-1">
+            <div className="relative">
+              <div className="aspect-video bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
+                {currentStep.gif ? (
+                  <img 
+                    src={currentStep.gif} 
+                    alt={`${currentStep.title} demo`}
+                    className="w-full h-full object-cover"
+                  />
+                ) : (
+                  <div className="w-full h-full bg-gray-900 p-6 flex items-center justify-center">
+                    <div className="w-full max-w-sm">
+                      <div className="bg-gray-800 rounded-lg p-4 font-mono text-xs leading-relaxed">
+                        <div className="text-gray-500">// Add to your website</div>
+                        <div className="mt-2">
+                          <span className="text-blue-400">&lt;script</span> 
+                          <span className="text-yellow-400"> src</span>=
+                          <span className="text-green-300">"https://hyphenbox-clientsdk.pages.dev/flow.js"</span>
+                          <span className="text-blue-400">&gt;&lt;/script&gt;</span>
+                        </div>
+                        
+                        <div className="mt-4 text-gray-500">// Initialize in your app</div>
+                        <div className="mt-2">
+                          <span className="text-blue-400">&lt;script&gt;</span>
+                        </div>
+                        <div className="ml-2">
+                          window.<span className="text-purple-400">hyphenSDKInstance</span> = window.Hyphenbox.
+                          <span className="text-purple-400">initialize</span>({"{"}
+                        </div>
+                        <div className="ml-4">
+                          <span className="text-blue-400">apiKey:</span> <span className="text-green-300">"your_api_key"</span>,
+                        </div>
+                        <div className="ml-4">
+                          <span className="text-blue-400">userId:</span> <span className="text-green-300">"user123"</span>, <span className="text-gray-500">// Replace with real ID</span>
+                        </div>
+                        <div className="ml-4">
+                          <span className="text-blue-400">userName:</span> <span className="text-green-300">"John Doe"</span> <span className="text-gray-500">// Replace with real name</span>
+                        </div>
+                        <div className="ml-2">{"});"}</div>
+                        <div>
+                          <span className="text-blue-400">&lt;/script&gt;</span>
+                        </div>
+                        
+                        <div className="mt-4 text-gray-500">// That's it! 🚀</div>
+                        <div className="text-gray-500">// The help button will appear automatically</div>
+                      </div>
+                    </div>
+                  </div>
+                )}
+              </div>
               
-              {/* Demo area */}
-              <div className="relative h-full p-6 grid place-items-center">
-                {/* Animated transition */}
-                <div className={cn(
-                  "transition-all duration-300",
-                  animating ? "opacity-0 scale-95" : "opacity-100 scale-100"
-                )}>
-                
-                  {/* Content changes based on active step */}
-                  {activeStep === 0 && (
-                    <div className="text-center">
-                      <div className="bg-white/90 p-6 rounded-lg shadow-inner mb-6 font-mono text-sm overflow-x-auto max-w-xl mx-auto border border-gray-100">
-                        <pre className="text-left">
-                          <code className="text-gray-800">
-                            <span className="text-purple-600">npm</span> install guide-cursor<br />
-                            <br />
-                            <span className="text-blue-600">import</span> GuideCursor <span className="text-blue-600">from</span> <span className="text-green-600">'guide-cursor'</span>;<br />
-                            <br />
-                            GuideCursor.<span className="text-yellow-600">init</span>({'{'}
-                            <br />
-                            {'  '}<span className="text-red-500">appId:</span> <span className="text-green-600">'YOUR_APP_ID'</span>,<br />
-                            {'  '}<span className="text-red-500">apiKey:</span> <span className="text-green-600">'YOUR_API_KEY'</span><br />
-                            {'}'});
-                          </code>
-                        </pre>
-                      </div>
-                      <p className="text-center text-sm text-muted-foreground">
-                        Just add these few lines to your application's entry point.
-                      </p>
-                    </div>
-                  )}
-                  
-                  {activeStep === 1 && (
-                    <div className="w-full max-w-2xl">
-                      <div className="bg-white/90 rounded-lg p-6 w-full shadow-inner border border-gray-100">
-                        <div className="flex items-center justify-between mb-4">
-                          <h4 className="font-medium">Analyzing User Flows</h4>
-                          <span className="text-sm text-muted-foreground">75% complete</span>
-                        </div>
-                        <div className="h-4 w-full bg-gray-100 rounded-full mb-6 overflow-hidden">
-                          <div className="h-4 bg-primary rounded-full w-3/4 animate-pulse"></div>
-                        </div>
-                        <div className="grid grid-cols-4 gap-4">
-                          {[1, 2, 3, 4, 5, 6, 7, 8].map((i) => (
-                            <div 
-                              key={i} 
-                              className={cn(
-                                "h-20 rounded-lg flex items-center justify-center transition-all duration-300",
-                                i % 3 === 0 
-                                  ? "bg-green-50 border border-green-200" 
-                                  : "bg-gray-50 border border-gray-200"
-                              )}
-                            >
-                              {i % 3 === 0 && (
-                                <Check className="w-6 h-6 text-green-500" />
-                              )}
-                            </div>
-                          ))}
-                        </div>
-                      </div>
-                      <div className="mt-4 text-center text-sm text-muted-foreground">
-                        Indexing user flows in progress: 75% complete
-                      </div>
-                    </div>
-                  )}
-                  
-                  {activeStep === 2 && (
-                    <div className="w-full max-w-2xl">
-                      <div className="bg-white/90 rounded-lg p-6 flex gap-6 shadow-inner border border-gray-100">
-                        <div className="w-1/2">
-                          <h4 className="font-medium mb-4">Generated Guide</h4>
-                          {[1, 2, 3, 4].map((i) => (
-                            <div key={i} className="flex items-center mb-4 group">
-                              <div className={cn(
-                                "w-8 h-8 rounded-full mr-3 flex items-center justify-center text-sm transition-colors",
-                                i === 2 
-                                  ? "bg-primary text-white" 
-                                  : "bg-gray-100 text-gray-600 group-hover:bg-primary/10"
-                              )}>
-                                {i}
-                              </div>
-                              <div className="flex-1">
-                                <div className="h-4 bg-gray-100 rounded w-full"></div>
-                                {i === 2 && (
-                                  <div className="h-3 bg-gray-50 rounded w-3/4 mt-2"></div>
-                                )}
-                              </div>
-                            </div>
-                          ))}
-                        </div>
-                        <div className="w-1/2 border-l pl-6">
-                          <h4 className="font-medium mb-4">Preview</h4>
-                          <div className="aspect-video bg-gray-50 rounded-lg mb-4 relative overflow-hidden border border-gray-200">
-                            <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-white/0"></div>
-                            <div className="absolute bottom-3 right-3 flex space-x-1">
-                              <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-                              <div className="w-2 h-2 rounded-full bg-gray-300"></div>
-                              <div className="w-2 h-2 rounded-full bg-primary"></div>
-                            </div>
-                          </div>
-                          <div className="w-full h-4 bg-gray-100 rounded mb-2"></div>
-                          <div className="w-3/4 h-4 bg-gray-100 rounded"></div>
-                        </div>
-                      </div>
-                      <div className="mt-4 text-center text-sm text-muted-foreground">
-                        Creating guides based on detected user flows
-                      </div>
-                    </div>
-                  )}
-                  
-                  {activeStep === 3 && (
-                    <div className="w-full max-w-2xl relative">
-                      <div className="bg-white/90 rounded-lg p-6 grid grid-cols-6 gap-6 shadow-inner border border-gray-100">
-                        <div className="col-span-1 flex flex-col gap-4">
-                          {[1, 2, 3, 4, 5].map((i) => (
-                            <div 
-                              key={i} 
-                              className={cn(
-                                "h-10 rounded-md transition-colors",
-                                i === 3 ? "bg-primary/10 border-l-2 border-primary" : "bg-gray-100"
-                              )}
-                            ></div>
-                          ))}
-                        </div>
-                        <div className="col-span-5 bg-gray-50 rounded-lg p-4 border border-gray-200">
-                          <div className="w-full h-6 bg-gray-100 rounded mb-5"></div>
-                          <div className="grid grid-cols-2 gap-4">
-                            <div className="aspect-video bg-white rounded-md shadow-sm border border-gray-100 flex items-center justify-center p-3">
-                              <div className="w-full h-4 bg-gray-100 rounded"></div>
-                            </div>
-                            <div className="aspect-video bg-white rounded-md shadow-sm border border-gray-100 flex items-center justify-center p-3">
-                              <div className="w-full h-4 bg-gray-100 rounded"></div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      
-                      <div className="absolute bottom-10 right-10">
-                        <div className="glass rounded-lg p-4 shadow-lg animate-pulse-soft max-w-[220px] border border-primary/20">
-                          <div className="text-sm font-medium mb-2 text-primary">Need help with this page?</div>
-                          <div className="text-xs text-muted-foreground mb-3">I can guide you through:</div>
-                          <div className="text-xs bg-primary/10 rounded-md py-1.5 px-3 mb-2 font-medium text-primary/80">Creating a new item</div>
-                          <div className="text-xs bg-secondary rounded-md py-1.5 px-3 font-medium text-secondary-foreground/80">Exporting data</div>
-                        </div>
-                      </div>
-                      
-                      <AnimatedCursor 
-                        size="medium" 
-                        animated={false} 
-                        className="absolute top-1/2 left-1/2 animate-cursor-move" 
-                      />
-                      
-                      <div className="mt-4 text-center text-sm text-muted-foreground">
-                        Users receive contextual help as they navigate
-                      </div>
-                    </div>
-                  )}
-                </div>
+              {/* Step indicator */}
+              <div className="absolute -top-3 -right-3 bg-gradient-to-r from-primary to-primary/80 text-white rounded-full w-8 h-8 flex items-center justify-center font-bold text-sm shadow-lg">
+                {steps.findIndex(s => s.id === activeStep) + 1}
               </div>
             </div>
           </div>
+
+          {/* Right side - Content */}
+          <div className="order-1 lg:order-2 space-y-6">
+            <div>
+              <div className="flex items-center gap-3 mb-4">
+                <div className="w-10 h-10 bg-gradient-to-r from-primary to-primary/80 rounded-lg flex items-center justify-center text-white">
+                  <currentStep.icon className="w-5 h-5" />
+                </div>
+                <h3 className="text-2xl md:text-3xl font-bold">{currentStep.title}</h3>
+              </div>
+              <p className="text-gray-600 leading-relaxed">
+                {currentStep.description}
+              </p>
+            </div>
+
+            <div className="space-y-3">
+              {currentStep.details.map((detail, index) => (
+                <div key={index} className="flex items-start gap-3">
+                  <div className="w-1.5 h-1.5 bg-primary rounded-full mt-2 flex-shrink-0"></div>
+                  <span className="text-gray-700 text-sm">{detail}</span>
+                </div>
+              ))}
+            </div>
+
+            <Button className="group bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary">
+              {currentStep.cta}
+              <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
+            </Button>
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center mt-16 p-6 md:p-8 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-2xl border border-primary/10">
+          <h3 className="text-xl md:text-2xl font-bold mb-3">Ready to boost your user completion rates?</h3>
+          <p className="text-muted-foreground mb-6 text-sm md:text-base">
+            Join teams already using HyphenBox to guide users through complex workflows.
+          </p>
+          <Button variant="outline" className="border-primary/20 hover:bg-primary/5">
+            Start Free Trial
+            <ArrowRight className="ml-2 w-4 h-4" />
+          </Button>
         </div>
       </div>
     </section>
