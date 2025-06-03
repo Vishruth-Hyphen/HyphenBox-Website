@@ -173,7 +173,10 @@ const HowItWorks: React.FC = () => {
               ))}
             </div>
 
-            <Button className="group bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary">
+            <Button 
+              className="group bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary"
+              onClick={() => window.open("https://chromewebstore.google.com/detail/heolaamdcaoadoacmihafnhegjijopgh?utm_source=item-share-cb", "_blank")}
+            >
               {currentStep.cta}
               <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Button>
