@@ -2,6 +2,10 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
+  const openCalendarPopup = () => {
+    window.open("https://calendar.app.google/mwipUSjbjHafkua97", "_blank", "width=600,height=700");
+  };
+
   return (
     <footer className="py-4 px-4">
       <div className="max-w-6xl mx-auto">
@@ -17,9 +21,12 @@ const Footer: React.FC = () => {
               <a href="#how-it-works" className="text-muted-foreground hover:text-primary transition-colors">
                 How It Works
               </a>
-              <a href="#demo" className="text-muted-foreground hover:text-primary transition-colors">
+              <button 
+                onClick={openCalendarPopup}
+                className="text-muted-foreground hover:text-primary transition-colors bg-transparent border-none cursor-pointer p-0 font-inherit text-sm"
+              >
                 Demo
-              </a>
+              </button>
               <Link to="/privacy-policy" className="text-muted-foreground hover:text-primary transition-colors">
                 Privacy Policy
               </Link>
