@@ -33,15 +33,7 @@ const Header: React.FC = () => {
             <img alt="HyphenBox" className="h-9" src="./lovable-uploads/3c26d8b0-3f8b-4a55-a617-e62da83daf42.png" />
           </div>
           
-          {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-6">
-            <a href="#how-it-works" className="text-sm text-foreground/70 hover:text-foreground transition-colors">
-              How It Works
-            </a>
-            <a href="#demo" className="text-sm text-foreground/70 hover:text-foreground transition-colors">
-              Demo
-            </a>
-          </nav>
+        
           
           {/* CTA */}
           <div className="flex items-center gap-2">
