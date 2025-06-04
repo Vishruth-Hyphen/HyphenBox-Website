@@ -15,7 +15,7 @@ const Hero: React.FC = () => {
   }, []);
 
   const goToSignup = () => {
-    window.open("https://dashboard.hyphenbox.io/signup", "_blank");
+    window.open("https://dashboard.hyphenbox.com/auth/signup", "_blank");
   };
 
   const handleVideoClick = (e: React.MouseEvent) => {
