@@ -12,21 +12,25 @@ const Header: React.FC = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const openCalendarPopup = () => {
-    window.open("https://calendar.app.google/mwipUSjbjHafkua97", "_blank", "width=600,height=700");
+  const goToSignup = () => {
+    window.open("https://dashboard.hyphenbox.com/auth/signup", "_blank");
+  };
+
+  const goToLogin = () => {
+    window.open("https://dashboard.hyphenbox.com/auth/login", "_blank");
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 px-3 py-3 md:p-4">
-      <div className={`max-w-6xl mx-auto transition-all duration-300 ${
+    <header className="fixed top-0 left-0 right-0 z-50 p-4">
+      <div className={`max-w-6xl mx-auto transition-all duration-300 rounded-2xl ${
         isScrolled 
           ? "bg-gradient-to-r from-blue-50/95 via-white/95 to-blue-50/95 backdrop-blur-md shadow-lg border border-blue-100/50" 
           : "bg-gradient-to-r from-blue-50/80 via-white/80 to-blue-50/80 backdrop-blur-sm"
-      } rounded-2xl`}>
-        <div className="flex items-center justify-between px-4 py-3 md:px-6">
+      }`}>
+        <div className="flex items-center justify-between px-6 py-3">
           {/* Logo */}
           <div className="flex items-center">
-            <img alt="HyphenBox" className="h-8 md:h-9" src="./lovable-uploads/3c26d8b0-3f8b-4a55-a617-e62da83daf42.png" />
+            <img alt="HyphenBox" className="h-9" src="./lovable-uploads/3c26d8b0-3f8b-4a55-a617-e62da83daf42.png" />
           </div>
           
           {/* Navigation */}
@@ -41,10 +45,10 @@ const Header: React.FC = () => {
           
           {/* CTA */}
           <div className="flex items-center gap-2">
-            <Button size="sm" variant="ghost" className="hidden sm:flex text-sm">
+            <Button size="sm" variant="ghost" className="hidden sm:flex text-sm" onClick={goToLogin}>
               Sign In
             </Button>
-            <Button size="sm" onClick={openCalendarPopup} className="text-sm px-3 py-2 h-8">
+            <Button size="sm" onClick={goToSignup} className="text-sm px-3 py-2 h-8">
               Get Started
             </Button>
           </div>

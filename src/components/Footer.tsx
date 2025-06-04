@@ -3,20 +3,16 @@ import { Link } from "react-router-dom";
 
 const Footer: React.FC = () => {
   return (
-    <footer className="relative py-4 px-3 md:px-4">
-      {/* Gradient background effects */}
-      <div className="absolute top-0 right-0 w-72 h-72 bg-primary/5 rounded-full blur-3xl translate-y-1/4 translate-x-1/4"></div>
-      <div className="absolute bottom-0 left-0 w-72 h-72 bg-accent/5 rounded-full blur-3xl -translate-y-1/4 -translate-x-1/4"></div>
-      
-      <div className="max-w-6xl mx-auto relative z-10">
+    <footer className="py-4 px-4">
+      <div className="max-w-6xl mx-auto">
         <div className="bg-gradient-to-r from-blue-50/80 via-white/80 to-blue-50/80 backdrop-blur-sm border border-blue-100/50 rounded-2xl px-6 py-6">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            {/* Left side - Logo */}
+            {/* Logo */}
             <div className="flex items-center">
               <img src="./lovable-uploads/3c26d8b0-3f8b-4a55-a617-e62da83daf42.png" alt="Hyphenbox Logo" className="h-8" />
             </div>
             
-            {/* Center - Navigation */}
+            {/* Navigation */}
             <div className="flex items-center gap-6 text-sm">
               <a href="#how-it-works" className="text-muted-foreground hover:text-primary transition-colors">
                 How It Works
@@ -29,7 +25,7 @@ const Footer: React.FC = () => {
               </Link>
             </div>
             
-            {/* Right side - Built by */}
+            {/* Built by */}
             <div className="flex items-center gap-4 text-sm">
               <span className="text-muted-foreground">Built by</span>
               <div className="flex items-center gap-3">
@@ -59,7 +55,7 @@ const Footer: React.FC = () => {
             </div>
           </div>
           
-          {/* Bottom copyright */}
+          {/* Copyright */}
           <div className="mt-4 pt-4 border-t border-gray-200/50 text-center">
             <div className="text-xs text-muted-foreground">
               © {new Date().getFullYear()} HyphenBox. All rights reserved.

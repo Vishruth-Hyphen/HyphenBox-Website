@@ -4,7 +4,6 @@ import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import OGImage from "./pages/OGImage";
 import PrivacyPolicy from "./pages/PrivacyPolicy";
-import "./App.css";
 
 // Create a client
 const queryClient = new QueryClient();

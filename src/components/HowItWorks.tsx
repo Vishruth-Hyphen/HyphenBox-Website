@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Download, Code, Play } from "lucide-react";
+import { ArrowRight, Download, Code } from "lucide-react";
 
 const steps = [
   {
@@ -35,12 +35,10 @@ const steps = [
 <script>
   window.hyphenSDKInstance = window.Hyphenbox.initialize({
     apiKey: "your_api_key",
-    userId: "user123",  // Replace with real user ID
-    userName: "John Doe"  // Replace with real name
+    userId: "user123",
+    userName: "John Doe"
   });
-</script>
-
-// That's it! 🚀 The help button will appear automatically`,
+</script>`,
     cta: "View Integration Guide",
     icon: Code
   }
@@ -48,11 +46,10 @@ const steps = [
 
 const HowItWorks: React.FC = () => {
   const [activeStep, setActiveStep] = useState("record");
-
   const currentStep = steps.find(step => step.id === activeStep) || steps[0];
 
   return (
-    <section id="how-it-works" className="py-16 md:py-20 bg-gradient-to-b from-gray-50/30 to-white">
+    <section id="how-it-works" className="py-20 bg-gradient-to-b from-gray-50/30 to-white">
       <div className="container mx-auto px-4 max-w-6xl">
         {/* Header */}
         <div className="text-center mb-12">
@@ -70,28 +67,25 @@ const HowItWorks: React.FC = () => {
         {/* Step Toggle Buttons */}
         <div className="flex justify-center mb-8">
           <div className="inline-flex bg-white rounded-xl p-1 shadow-sm border border-gray-200">
-            {steps.map((step, index) => {
-              const isActive = activeStep === step.id;
-              return (
-                <button
-                  key={step.id}
-                  onClick={() => setActiveStep(step.id)}
-                  className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
-                    isActive 
-                      ? 'bg-primary text-white shadow-sm' 
-                      : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
-                  }`}
-                >
-                  Step {index + 1}: {step.title}
-                </button>
-              );
-            })}
+            {steps.map((step, index) => (
+              <button
+                key={step.id}
+                onClick={() => setActiveStep(step.id)}
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
+                  activeStep === step.id 
+                    ? 'bg-primary text-white shadow-sm' 
+                    : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                }`}
+              >
+                Step {index + 1}: {step.title}
+              </button>
+            ))}
           </div>
         </div>
 
         {/* Step Content */}
-        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 items-center">
-          {/* Left side - Visual */}
+        <div className="grid lg:grid-cols-2 gap-12 items-center">
+          {/* Visual */}
           <div className="order-2 lg:order-1">
             <div className="relative">
               <div className="aspect-video bg-white rounded-xl shadow-lg border border-gray-200 overflow-hidden">
@@ -125,18 +119,15 @@ const HowItWorks: React.FC = () => {
                           <span className="text-blue-400">apiKey:</span> <span className="text-green-300">"your_api_key"</span>,
                         </div>
                         <div className="ml-4">
-                          <span className="text-blue-400">userId:</span> <span className="text-green-300">"user123"</span>, <span className="text-gray-500">// Replace with real ID</span>
+                          <span className="text-blue-400">userId:</span> <span className="text-green-300">"user123"</span>,
                         </div>
                         <div className="ml-4">
-                          <span className="text-blue-400">userName:</span> <span className="text-green-300">"John Doe"</span> <span className="text-gray-500">// Replace with real name</span>
+                          <span className="text-blue-400">userName:</span> <span className="text-green-300">"John Doe"</span>
                         </div>
                         <div className="ml-2">{"});"}</div>
                         <div>
                           <span className="text-blue-400">&lt;/script&gt;</span>
                         </div>
-                        
-                        <div className="mt-4 text-gray-500">// That's it! 🚀</div>
-                        <div className="text-gray-500">// The help button will appear automatically</div>
                       </div>
                     </div>
                   </div>
@@ -150,7 +141,7 @@ const HowItWorks: React.FC = () => {
             </div>
           </div>
 
-          {/* Right side - Content */}
+          {/* Content */}
           <div className="order-1 lg:order-2 space-y-6">
             <div>
               <div className="flex items-center gap-3 mb-4">
@@ -184,12 +175,16 @@ const HowItWorks: React.FC = () => {
         </div>
 
         {/* Bottom CTA */}
-        <div className="text-center mt-16 p-6 md:p-8 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-2xl border border-primary/10">
-          <h3 className="text-xl md:text-2xl font-bold mb-3">Ready to boost your user completion rates?</h3>
-          <p className="text-muted-foreground mb-6 text-sm md:text-base">
+        <div className="text-center mt-16 p-8 bg-gradient-to-r from-primary/5 via-primary/10 to-primary/5 rounded-2xl border border-primary/10">
+          <h3 className="text-2xl font-bold mb-3">Ready to boost your user completion rates?</h3>
+          <p className="text-muted-foreground mb-6">
             Join teams already using HyphenBox to guide users through complex workflows.
           </p>
-          <Button variant="outline" className="border-primary/20 hover:bg-primary/5">
+          <Button 
+            variant="outline" 
+            className="border-primary/20 hover:bg-primary/5"
+            onClick={() => window.open("https://dashboard.hyphenbox.com/auth/signup", "_blank")}
+          >
             Start Free Trial
             <ArrowRight className="ml-2 w-4 h-4" />
           </Button>
