@@ -74,7 +74,8 @@ const Hero: React.FC = () => {
           </div>
           
           {/* Value props */}
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12 max-w-3xl mx-auto">
+          {/* Desktop layout */}
+          <div className="hidden md:grid md:grid-cols-3 gap-8 mb-12 max-w-3xl mx-auto">
             <div className="text-center">
               <div className="w-12 h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-4">
                 <span className="text-2xl">🎬</span>
@@ -95,6 +96,28 @@ const Hero: React.FC = () => {
               </div>
               <h3 className="font-semibold mb-2">Guide Forever</h3>
               <p className="text-muted-foreground text-sm">Help users complete flows when they get stuck</p>
+            </div>
+          </div>
+
+          {/* Mobile layout */}
+          <div className="md:hidden grid grid-cols-3 gap-x-2 sm:gap-x-4 mb-12 max-w-xs sm:max-w-sm mx-auto">
+            <div className="flex flex-col items-center text-center">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                <span className="text-xl sm:text-2xl">🎬</span>
+              </div>
+              <h3 className="font-semibold text-xs sm:text-sm leading-tight">Record Once</h3>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                <span className="text-xl sm:text-2xl">⚡</span>
+              </div>
+              <h3 className="font-semibold text-xs sm:text-sm leading-tight">Integrate Simply</h3>
+            </div>
+            <div className="flex flex-col items-center text-center">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-primary/10 rounded-lg flex items-center justify-center mx-auto mb-2">
+                <span className="text-xl sm:text-2xl">🎯</span>
+              </div>
+              <h3 className="font-semibold text-xs sm:text-sm leading-tight">Guide Forever</h3>
             </div>
           </div>
           
